@@ -6,7 +6,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <property name="context-root" value="Market-WS"/>
         <property name="java-output-path" value="/Market-WS/build/classes"/>
+        <property name="context-root" value="market"/>
     </wb-module>
 </project-modules>

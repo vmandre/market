@@ -15,7 +15,7 @@ import br.com.market.service.UnidadeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration({ "file:src/test/resources/context-test.xml" })
-@ContextConfiguration({ "file:src/main/resources/spring/config/beanLocations.xml" })
+@ContextConfiguration({ "file:src/test/resources/spring/application-context-test.xml" })
 public class ModelTest {
 	@Autowired
     private ApplicationContext applicationContext;

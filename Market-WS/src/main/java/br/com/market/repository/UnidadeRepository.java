@@ -1,28 +1,25 @@
 package br.com.market.repository;
 
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
+import br.com.market.infra.repository.EntityRepository;
 import br.com.market.model.Unidade;
 
 @Repository
-@Transactional
-public class UnidadeRepository extends AbstractRepository {
+//@Transactional
+public class UnidadeRepository extends EntityRepository<Unidade> {
 	
-//    @SuppressWarnings("unchecked")
-//    public List<Unidade> findAllUnidades() {
-//        Criteria criteria = getSession().createCriteria(Unidade.class);
-//        return (List<Unidade>) criteria.list();
+//	@SuppressWarnings("unchecked")
+//	public List<Unidade> findAllUnidades() {
+//		List<Unidade> unidadeList = getSession().createQuery("from Unidade").list();
+//		return unidadeList;
+//	}
+//	
+//    public Unidade findAUnidade(Long id) {
+//        Query query = getSession().createQuery("from Unidade where id = :id");
+//        query.setLong("id", id);
+//        Unidade unidade = (Unidade) query.uniqueResult();
+//        return unidade;
 //    }
-    
-    @SuppressWarnings("unchecked")
-    public List<Unidade> findAllUnidades() {
-//        Session session = getSession().openSession();
-        List<Unidade> unidadeList = getSession().createQuery("from Unidade").list();
-//        session.close();
-        return unidadeList;
-    }
 
 }

@@ -1,7 +1,5 @@
 package br.com.market.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,28 +7,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.market.infra.model.Identity;
+
 @Entity
 @Table(name = "unidade")
-public class Unidade implements Serializable {
-
+public class Unidade extends Identity {
 
     /** @serialField */
 	private static final long serialVersionUID = 7252108219617268661L;
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	
+//	@Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
+//	
+//	public int getId() {
+//		return id;
+//	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
     
     @Column(name = "nome", nullable = false)
     private String nome;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -42,7 +40,7 @@ public class Unidade implements Serializable {
     
     @Override
     public String toString() {
-        return "Unidade [ id=" + id + ", nome=" + nome + " ]";
+        return "Unidade [ id=" + getId() + ", nome=" + nome + " ]";
     }
 
 }
