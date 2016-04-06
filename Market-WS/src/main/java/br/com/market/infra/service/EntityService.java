@@ -33,20 +33,20 @@ public abstract class EntityService<T extends Entity<?>> {
 	
 	/**
 	 * 
-	 * @param id
+	 * @param cod
 	 * @return
 	 */
-	public T get(Long id) {
-		return repository.get(id);
+	public T get(Long cod) {
+		return repository.get(cod);
 	}
 	
 	/**
 	 * 
-	 * @param id
+	 * @param cod
 	 * @return
 	 */
-	public T load(Long id) {
-		return repository.load(id);
+	public T load(Long cod) {
+		return repository.load(cod);
 	}
 	
 	/**
@@ -104,12 +104,12 @@ public abstract class EntityService<T extends Entity<?>> {
 	
 	/**
 	 * 
-	 * @param ids
+	 * @param cods
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	public void loadAndDeleteById(Long...ids) {
-		for (Long id : ids) {
-			T entity = load(id);
+	public void loadAndDeleteByCod(Long...cods) {
+		for (Long cod : cods) {
+			T entity = load(cod);
 			if (entity != null) {
 				delete(entity);
 			}
@@ -118,11 +118,11 @@ public abstract class EntityService<T extends Entity<?>> {
 	
 	/**
 	 * 
-	 * @param ids
+	 * @param cods
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	public void deleteById(Long...ids) {
-		repository.deleteById(ids);
+	public void deleteByCod(Long...cods) {
+		repository.deleteByCod(cods);
 	}
 	
 	/**
@@ -136,14 +136,14 @@ public abstract class EntityService<T extends Entity<?>> {
 	}
 	
 	/**
-	 * Recupera registro pelo ID.
+	 * Recupera registro pelo código.
 	 * 
-	 * @param id
+	 * @param cod
 	 * @param fields
 	 * @return
 	 */
-	public T load(Long id, String...fields) {
-		return repository.load(id, fields);
+	public T load(Long cod, String...fields) {
+		return repository.load(cod, fields);
 	}
 	
 	/**

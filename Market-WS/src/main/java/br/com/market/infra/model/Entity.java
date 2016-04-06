@@ -2,17 +2,17 @@ package br.com.market.infra.model;
 
 import java.io.Serializable;
 
-public abstract class Entity<ID extends Serializable> implements Serializable {
+public abstract class Entity<Cod extends Serializable> implements Serializable {
 	
 	/** @serialField */
 	private static final long serialVersionUID = -5722126569547428139L;
-	protected ID id;
+	protected Cod cod;
 	
-	public ID getId() {
-		return id;
+	public Cod getCod() {
+		return cod;
 	}
 	
-	public void setId(ID id) {
-		this.id = id;
+	public void setCod(Cod cod) {
+		this.cod = cod;
 	}
 }

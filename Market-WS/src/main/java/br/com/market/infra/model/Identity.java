@@ -16,10 +16,10 @@ public abstract class Identity extends Entity<Long> implements Comparable<Identi
 	private static final long serialVersionUID = -2661277236835013999L;
 
 	@Id
-	@Column(name="id", nullable=false)
+	@Column(name="cod", nullable=false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
+	public Long getCod() {
+		return cod;
 	}
 	
 	@Override
@@ -29,43 +29,43 @@ public abstract class Identity extends Entity<Long> implements Comparable<Identi
 			return false;
 		}
 
-		Long id = getId();
-		if (id == null) {
+		Long cod = getCod();
+		if (cod == null) {
 			return super.equals(other);
 		}
 
 		Identity castOther = (Identity) other;
-		Long castOtherId = castOther.getId();
+		Long castOtherId = castOther.getCod();
 
-		return new EqualsBuilder().append(id, castOtherId).isEquals();
+		return new EqualsBuilder().append(cod, castOtherId).isEquals();
 	}
 	
 	@Override
 	public int hashCode() {
 
-		Long id = getId();
+		Long cod = getCod();
 
-		if (id == null) {
+		if (cod == null) {
 			return super.hashCode();
 		}
 
-		return new HashCodeBuilder().append(id).toHashCode();
+		return new HashCodeBuilder().append(cod).toHashCode();
 	}
 	
 	@Override
 	public int compareTo(Identity o) {
 
-		Long oId = o.getId();
-		if (oId == null) {
+		Long oCod = o.getCod();
+		if (oCod == null) {
 			return 1;
 		}
 
-		Long thisId = getId();
-		if (thisId == null) {
+		Long thisCod = getCod();
+		if (thisCod == null) {
 			return -1;
 		}
 
-		int compare = thisId.compareTo(oId);
+		int compare = thisCod.compareTo(oCod);
 		return compare;
 	}
 }

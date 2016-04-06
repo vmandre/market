@@ -92,20 +92,20 @@ public abstract class EntityRepository<T extends Entity> extends AbstractReposit
 	
 	/**
 	 * 
-	 * @param id
+	 * @param cod
 	 * @return
 	 */
-	public T get(Long id) {
-		return (T) getSession().get(getEntityClass(), id);
+	public T get(Long cod) {
+		return (T) getSession().get(getEntityClass(), cod);
 	}
 	
 	/**
 	 * 
-	 * @param id
+	 * @param cod
 	 * @return
 	 */
-	public T load(Long id) {
-		return (T) getSession().load(getEntityClass(), id);
+	public T load(Long cod) {
+		return (T) getSession().load(getEntityClass(), cod);
 	}
 	
 	public List<T> listAllOrderBy(String propertyOrder) {
@@ -166,11 +166,11 @@ public abstract class EntityRepository<T extends Entity> extends AbstractReposit
 	
 	/**
 	 * 
-	 * @param ids
+	 * @param cods
 	 */
-	public void loadAndDeleteById(Long...ids) {
-		for (Long id : ids) {
-			T entity = load(id);
+	public void loadAndDeleteByCod(Long...cods) {
+		for (Long cod : cods) {
+			T entity = load(cod);
 			if (entity != null) {
 				delete(entity);
 			}
@@ -179,42 +179,42 @@ public abstract class EntityRepository<T extends Entity> extends AbstractReposit
 	
 	/**
 	 * 
-	 * @param ids
+	 * @param cods
 	 */
-	public void deleteById(Long...ids) {
+	public void deleteByCod(Long...cods) {
 		
 		StringBuilder hql = new StringBuilder();
 		
 		hql	.append("delete ");
 		hql	.append(	"from ").append(getEntityName()).append(" ");
-		hql	.append("where id ").append(ids.length == 1 ? "= :id" : "in (:ids)");
+		hql	.append("where cod ").append(cods.length == 1 ? "= :cod" : "in (:cods)");
 		
 		Query query = createQuery(hql);
 		
-		if (ids.length == 1) {
-			query.setLong("id", ids[0]);
+		if (cods.length == 1) {
+			query.setLong("cod", cods[0]);
 		}
 		
 		else {
-			query.setParameterList("ids", ids);
+			query.setParameterList("cods", cods);
 		}
 		
 		query.executeUpdate();
 	}
 	
-	public T load(Long id, String...fields) {
+	public T load(Long cod, String...fields) {
 		StringBuilder hql = new StringBuilder();
 		hql	.append("select ");
-		hql	.append(	"entity.id as id ");
+		hql	.append(	"entity.cod as cod ");
 		for (String field : fields) {
 			hql	.append(", ");
 			hql	.append("entity.").append(field).append(" as ").append(field);
 		}
 		hql	.append(" ");
 		hql	.append("from ").append(getEntityName()).append(" entity ");
-		hql	.append("where entity.id = :id ");
+		hql	.append("where entity.cod = :cod ");
 		Query query = createQuery(hql);
-		query.setLong("id", id);
+		query.setLong("cod", cod);
 		query.setResultTransformer(Transformers.aliasToBean(getEntityClass()));
 		return (T) query.uniqueResult();
 	}
@@ -255,8 +255,8 @@ public abstract class EntityRepository<T extends Entity> extends AbstractReposit
 			throw new IllegalStateException(e);
 		}
 		
-		hql	.append("where id = :id ");
-		params.put("id", entity.getId());
+		hql	.append("where cod = :cod ");
+		params.put("cod", entity.getCod());
 		
 		Query query = createQuery(hql, params);
 		

@@ -2,8 +2,18 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Server ON</title>
+    <title>404 - Página Não Encontrada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript"> 
+		function bla() {
+			var ofs = 0;
+			var el = document.getElementById('imp');
+			window.setInterval(function(){
+			  el.style.background = 'rgba(200,0,0,'+Math.abs(Math.sin(ofs))+')';
+			  ofs += 0.01;
+			}, 10);
+		}
+	</script>
     <style>
         * {
             line-height: 1.2;
@@ -42,9 +52,11 @@
         }
     </style>
 </head>
-<body>
-	<img src="resources/logo_transparente.png">
-    <h1>ONLINE</h1>
-    <p>Divirta servidor de pé =)</p>
+<body onload="bla()">
+	<div id="imp">
+		<img src="resources/logo_transparente.png">
+	    <h1>Página Não Encontrada</h1>
+	    <p>A página não existente =(</p>
+	</div>
 </body>
 </html>

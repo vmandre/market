@@ -10,8 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import br.com.market.model.Unidade;
-import br.com.market.service.UnidadeService;
+import br.com.market.model.Loja;
+import br.com.market.service.LojaService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration({ "file:src/test/resources/context-test.xml" })
@@ -20,7 +20,7 @@ public class ModelTest {
 	@Autowired
     private ApplicationContext applicationContext;
 	@Autowired
-	private UnidadeService service;
+	private LojaService service;
 	
 	
 	@Before
@@ -31,11 +31,11 @@ public class ModelTest {
 	}
 	
 	@Test
-	public void findAllUnidades() {
+	public void listarLojas() {
 //		UnidadeService service = (UnidadeService) context.getBean("unidadeService");
-		List<Unidade> unidades = service.findAllUnidades();
+		List<Loja> lojas = service.listAll();
 		
-		if (unidades != null) {
+		if (lojas != null) {
 			assert(true);
 		} else {
 			assert(false);
