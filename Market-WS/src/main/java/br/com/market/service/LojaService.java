@@ -10,6 +10,7 @@ import br.com.market.repository.LojaRepository;
 @Service
 public class LojaService extends EntityService<Loja> {
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private LojaRepository repository;
 	
