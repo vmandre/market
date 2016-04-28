@@ -1,0 +1,23 @@
+-- Table: public.cargo
+DROP TABLE public.cargo;
+-- Table: public.loja
+DROP TABLE public.loja;
+-- Table: public.setor
+DROP TABLE public.setor;
+-- Table: public.funcionario
+DROP TABLE public.funcionario;
+-- Table: public.funcionario_setor
+DROP TABLE public.funcionario_setor;
+-- Table: public.funcionario_vaga
+DROP TABLE public.funcionario_vaga;
+-- Table: public.historico_ferias
+DROP TABLE public.historico_ferias;
+-- Table: public.holerite
+DROP TABLE public.holerite;
+-- Table: public.loja_setor
+DROP TABLE public.loja_setor;
+-- Table: public.noticia
+DROP TABLE public.noticia;
+-- Table: public.vaga
+DROP TABLE public.vaga;
+
