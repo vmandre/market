@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Market-Android</string>
+
+    <string name="label_matricula">Matrícula</string>
+    <string name="label_senha">Senha</string>
+
+    <string name="btn_entrar">ENTRAR</string>
+
+    <string name="link_esqueci_senha">Esqueci minha senha</string>
+</resources>
