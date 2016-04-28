@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.market.infra.model.Entity;
-import br.com.market.model.Loja;
 
 @RequestMapping("/")
 public abstract class AbstractController <T extends Entity<?>> {
@@ -20,7 +19,7 @@ public abstract class AbstractController <T extends Entity<?>> {
 	public abstract @ResponseBody T consultar(Long cod);
 	
 	@RequestMapping(value = "/criar", method = RequestMethod.POST)
-	public abstract @ResponseBody Loja criar(@RequestBody T entity);
+	public abstract @ResponseBody T criar(@RequestBody T entity);
 	
 	@RequestMapping(value="/atualizar",  method = RequestMethod.PUT)
 	@ResponseBody

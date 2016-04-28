@@ -21,6 +21,7 @@ public class Funcionario extends Identity {
 	private static final long serialVersionUID = -3584880229134265318L;
 	
 	private Long matricula;
+	private String senha;
 	private String nome;
 	private Date dataAdmissao;
 	private Loja loja;
@@ -36,9 +37,14 @@ public class Funcionario extends Identity {
 		return matricula;
 	}
 	
+	public String getSenha() {
+		return senha;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_admissao")
@@ -46,13 +52,13 @@ public class Funcionario extends Identity {
 		return dataAdmissao;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_loja", nullable=false)
 	public Loja getLoja() {
 		return loja;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_cargo", nullable=false)
 	public Cargo getCargo() {
 		return cargo;
@@ -126,5 +132,9 @@ public class Funcionario extends Identity {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }
