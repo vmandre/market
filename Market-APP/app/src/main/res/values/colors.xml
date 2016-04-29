@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--CORES DA TELA DE LOGIN-->
+    <color name="branco">#fcfcfc</color>
+
+    <color name="cinza_escuro">#ff0101</color>
+</resources>

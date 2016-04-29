@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bg_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#065EA3"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <LinearLayout
+            android:id="@+id/lilLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:gravity="top|center|bottom"
+            android:orientation="horizontal" >
+
+            <com.skyfishjy.library.RippleBackground
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/content"
+                app:rb_color="#FF1493"
+                app:rb_radius="32dp"
+                app:rb_rippleAmount="4"
+                app:rb_duration="3000"
+                app:rb_scale="6">
+                <ImageView
+                    android:id="@+id/centerImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logo_transparente" />
+            </com.skyfishjy.library.RippleBackground>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

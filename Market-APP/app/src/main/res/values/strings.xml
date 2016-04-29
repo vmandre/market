@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Market</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_sair">Sair</string>
+
+    <string name="label_matricula">Matrícula</string>
+    <string name="label_senha">Senha</string>
+
+    <string name="btn_entrar">ENTRAR</string>
+
+    <string name="link_esqueci_senha">Esqueci minha senha</string>
+
+</resources>
