@@ -1,13 +1,16 @@
 package br.com.market.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 
@@ -22,6 +25,8 @@ public class LoginActivity extends Activity {
 
     @RestService
     MarketRestService marketService;
+
+    private static Context parent;
 
     @ViewById(R.id.edtMatricula)
     public EditText edtMatricula;
@@ -39,6 +44,10 @@ public class LoginActivity extends Activity {
      */
     private void exibirToast(CharSequence mensagem, int duration) {
         Toast.makeText( getApplicationContext(), mensagem, duration).show();
+    }
+
+    private void exibirToast2(CharSequence mensagem, int duration) {
+        Toast.makeText( parent , mensagem, duration).show();
     }
 
     @Click(R.id.btn_Login)
@@ -61,18 +70,28 @@ public class LoginActivity extends Activity {
         funcionario.setMatricula(new Long(matricula));
         funcionario.setSenha(senha);
 
-        marketService.login(funcionario);
+        parent = this.getBaseContext();
+        realizarLogin(funcionario);
+    };
 
-        Funcionario resposta = null;
+    @Background
+    public void realizarLogin(Funcionario funcionario) {
+        Funcionario resposta = marketService.login(funcionario);
 
         if (resposta == null) {
-            exibirToast("Usuário/Senha incorreto!", Toast.LENGTH_LONG);
+            erroLogin();
         } else {
             //TODO Adicionar usuario logado na sessao!
             Intent it = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(it);
         }
+    }
 
-    };
+
+    @UiThread
+        // will be called on the main thread
+    void erroLogin() {
+        exibirToast("Usuário/Senha incorreto!", Toast.LENGTH_LONG);
+    }
 
 }

@@ -1,6 +1,6 @@
 package br.com.market.models;
 
-public class Loja {
+public class Loja extends AbstractModel {
 
     private String nome;
 
