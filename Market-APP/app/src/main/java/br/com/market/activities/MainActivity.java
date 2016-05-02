@@ -1,4 +1,4 @@
-package market.com.br.market;
+package br.com.market.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
-import com.skyfishjy.library.RippleBackground;
+import br.com.market.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Intent it = new Intent(MainActivity.this, LoginActivity.class);
+            Intent it = new Intent(MainActivity.this, LoginActivity_.class);
             startActivity(it);
         }
 
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nv_login) {
-            Intent it = new Intent(MainActivity.this, LoginActivity.class);
+            Intent it = new Intent(MainActivity.this, LoginActivity_.class);
             startActivity(it);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

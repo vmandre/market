@@ -38,6 +38,7 @@ public class LojaController extends AbstractController<Loja> {
 	public void atualizar(Long cod, @RequestBody Loja loja) {
 		if (lojaService.get(cod) == null) {
 			//TODO ERRO
+			return;
 		}
 		
 		lojaService.update(loja);
@@ -46,8 +47,6 @@ public class LojaController extends AbstractController<Loja> {
 	@Override
 	public void remover(Long cod) {
 		lojaService.deleteByCod(cod);
-		
 	}
-
 
 }
