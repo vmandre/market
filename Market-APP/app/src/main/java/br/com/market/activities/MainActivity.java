@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity
 
     @ViewById(R.id.textNomeFuncionario)
     TextView textNomeFuncionario;
+    @ViewById(R.id.textMatriculaFuncionario)
+    TextView textMatriculaFuncionario;
     @ViewById(R.id.toolbar)
     Toolbar toolbar;
     @ViewById(R.id.drawer_layout)
@@ -40,12 +43,11 @@ public class MainActivity extends AppCompatActivity
     @ViewById(R.id.nav_view)
     NavigationView navigationView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        navigationView.setNavigationItemSelectedListener(this);
 
         Funcionario funcionarioLogado = (Funcionario) Utils.jsonToObject(
                 ParametrosAplicacao.getParametro(getApplicationContext(), ParametrosAplicacao.CHAVE_FUNCIONARIO_LOGADO), Funcionario.class);
@@ -53,11 +55,16 @@ public class MainActivity extends AppCompatActivity
         if (funcionarioLogado == null) {
             //TODO NAO ENCOTROU O USUARIO, SOLICITAR LOGIN
         } else {
+            //View header = navigationView.inflateHeaderView(R.layout.nav_header_main);
+            View header = navigationView.inflateHeaderView(R.layout.nav_header_main);
+            navigationView.removeHeaderView(header);
+            navigationView.addHeaderView(header);
 
-            //textNomeFuncionario.setText(funcionarioLogado.getNome());
+            textNomeFuncionario = (TextView) header.findViewById(R.id.textNomeFuncionario);
+            textMatriculaFuncionario = (TextView) header.findViewById(R.id.textMatriculaFuncionario);
+            textNomeFuncionario.setText(funcionarioLogado.getNome());
+            textMatriculaFuncionario.setText("Matrícula: " + funcionarioLogado.getMatricula().toString());
         }
-
-
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,7 +76,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        //navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -108,9 +115,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nv_login) {
-            Intent it = new Intent(MainActivity.this, LoginActivity_.class);
-            startActivity(it);
+        if (id == R.id.nv_meus_dados) {
+            //Intent it = new Intent(MainActivity.this, LoginActivity_.class);
+            //startActivity(it);
+            //toolbar.setContent
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

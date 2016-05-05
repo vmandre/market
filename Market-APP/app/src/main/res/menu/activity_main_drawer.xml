@@ -3,33 +3,41 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nv_login"
+            android:id="@+id/nv_meus_dados"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Login" />
+            android:title="@string/meus_dados" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_holerite"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="@string/holerite" />
+
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_solicitacao_ferias"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/solicitacao_ferias" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/market_area">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_lista_vagas"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/vagas_disponiveis" />
+
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_lista_noticias"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/noticias" />
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_configuracao"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/configuracao" />
         </menu>
     </item>
 

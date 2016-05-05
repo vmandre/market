@@ -13,5 +13,12 @@
     <string name="btn_entrar">ENTRAR</string>
 
     <string name="link_esqueci_senha">Esqueci minha senha</string>
+    <string name="meus_dados">Meus Dados</string>
+    <string name="vagas_disponiveis">Vagas Disponíveis</string>
+    <string name="holerite">Holerite</string>
+    <string name="solicitacao_ferias">Solicitação de Férias</string>
+    <string name="noticias">Notícias</string>
+    <string name="market_area">Market Área</string>
+    <string name="configuracao">Configuração</string>
 
 </resources>
