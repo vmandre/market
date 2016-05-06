@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity
     @ViewById(R.id.nav_view)
     NavigationView navigationView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
