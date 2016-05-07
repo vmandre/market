@@ -3,11 +3,13 @@ package br.com.market.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.com.market.infra.exception.ModelNaoEncontradoException;
 import br.com.market.infra.service.EntityService;
 import br.com.market.model.Loja;
 
@@ -35,17 +37,20 @@ public class LojaController extends AbstractController<Loja> {
 	}
 
 	@Override
-	public void atualizar(Long cod, @RequestBody Loja loja) {
+	public void atualizar(Long cod, @RequestBody Loja loja) throws ModelNaoEncontradoException {
 		if (lojaService.get(cod) == null) {
-			//TODO ERRO
-			return;
+			throw new ModelNaoEncontradoException(HttpStatus.BAD_REQUEST.value(), "Loja não encontrada.");
 		}
 		
 		lojaService.update(loja);
 	}
 
 	@Override
-	public void remover(Long cod) {
+	public void remover(Long cod) throws ModelNaoEncontradoException {
+		if (lojaService.get(cod) == null) {
+			throw new ModelNaoEncontradoException(HttpStatus.BAD_REQUEST.value(), "Loja não encontrada.");
+		}
+		
 		lojaService.deleteByCod(cod);
 	}
 

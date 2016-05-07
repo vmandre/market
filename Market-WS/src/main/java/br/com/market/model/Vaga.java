@@ -35,13 +35,13 @@ public class Vaga extends Identity {
 		return descricao;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_cargo", nullable=false)
 	public Cargo getCargo() {
 		return cargo;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_loja", nullable=false)
 	public Loja getLoja() {
 		return loja;

@@ -46,7 +46,7 @@ public class Noticia extends Identity {
 		return dataFim;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_loja", nullable=false)
 	public Loja getLoja() {
 		return loja;
