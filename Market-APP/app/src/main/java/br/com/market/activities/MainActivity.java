@@ -2,10 +2,9 @@ package br.com.market.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,11 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import br.com.market.R;
+import br.com.market.fragment.VagasDisponiveisFragment;
+import br.com.market.fragment.VagasDisponiveisFragment_;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
 import br.com.market.models.Funcionario;
@@ -114,13 +114,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nv_meus_dados) {
-            //Intent it = new Intent(MainActivity.this, LoginActivity_.class);
-            //startActivity(it);
-            //toolbar.setContent
+        if (id == R.id.nav_lista_vagas) {
+            iniciaTrafment(this, new VagasDisponiveisFragment_());
+
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    void iniciaTrafment(final FragmentActivity activity, final Fragment fragment) {
+        FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
+        t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        t.replace(R.id.fragment_principal, fragment);
+        t.commit();
+    }
+
 }

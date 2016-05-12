@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.market.activities.MainActivity">
+
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:id="@+id/linearLayout2"
+        android:background="@color/branco"
+        android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/branco"
+        android:layout_weight="0.5"
+        android:layout_margin="4dp"
+        android:paddingBottom="@dimen/margin_8dp"
+        android:paddingLeft="@dimen/margin_8dp"
+        android:paddingRight="@dimen/margin_8dp"
+        android:paddingTop="@dimen/margin_8dp">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1"
+            android:padding="5dp"
+            android:layout_margin="5dp">
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sua Unidade"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/preto"
+                    android:paddingBottom="@dimen/margin_8dp"
+                    android:paddingTop="@dimen/margin_8dp"
+                    android:layout_gravity="left"
+                    android:textSize="15dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_ver_mais_sua_unidade"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_list_black_48dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/branco"
+                    android:layout_gravity="right"/>
+            </TableRow>
+
+        </TableLayout>
+
+        <ListView
+            android:layout_below="@+id/linearLayout_cabecalho"
+            android:id="@+id/lv_sua_unidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/branco" />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/branco"
+        android:layout_weight="0.5"
+        android:layout_margin="4dp"
+        android:paddingBottom="@dimen/margin_8dp"
+        android:paddingLeft="@dimen/margin_8dp"
+        android:paddingRight="@dimen/margin_8dp"
+        android:paddingTop="@dimen/margin_8dp">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1"
+            android:padding="5dp"
+            android:layout_margin="5dp">
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Outras Unidades"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/preto"
+                    android:paddingBottom="@dimen/margin_8dp"
+                    android:paddingTop="@dimen/margin_8dp"
+                    android:textSize="15dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_ver_mais_outras_unidades"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_list_black_48dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/branco"
+                    android:layout_gravity="right"/>
+            </TableRow>
+
+        </TableLayout>
+
+        <ListView
+            android:layout_below="@+id/linearLayout_cabecalho"
+            android:id="@+id/lv_outras_unidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/branco" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

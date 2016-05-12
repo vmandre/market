@@ -7,5 +7,7 @@
     <!--CORES DA TELA DE LOGIN-->
     <color name="branco">#fcfcfc</color>
 
-    <color name="cinza_escuro">#ff0101</color>
+    <color name="cinza_escuro">#868282</color>
+    <color name="cinza">#c7c7c7</color>
+    <color name="preto">#020202</color>
 </resources>
