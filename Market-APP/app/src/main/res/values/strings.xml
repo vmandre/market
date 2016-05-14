@@ -21,5 +21,11 @@
     <string name="noticias">Notícias</string>
     <string name="market_area">Market Área</string>
     <string name="configuracao">Configuração</string>
+    <string name="label_loja">Loja</string>
+    <string name="label_celular">Celular</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_cargo">Cargo</string>
+    <string name="label_cpf">CPF</string>
+    <string name="label_data_nascimento">Data Nascimento</string>
 
 </resources>

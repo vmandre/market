@@ -20,6 +20,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import br.com.market.R;
+import br.com.market.fragment.MeusDadosFragment_;
 import br.com.market.fragment.VagasDisponiveisFragment_;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
@@ -115,7 +116,9 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_lista_vagas) {
             iniciaTrafment(this, new VagasDisponiveisFragment_());
-
+        }
+        if (id == R.id.nv_meus_dados) {
+            iniciaTrafment(this, new MeusDadosFragment_());
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
