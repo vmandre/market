@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="br.com.market.activities.MainActivity">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/branco"
+                android:layout_weight="0.5"
+                android:layout_margin="4dp"
+                android:paddingBottom="@dimen/margin_8dp"
+                android:paddingLeft="@dimen/margin_8dp"
+                android:paddingRight="@dimen/margin_8dp"
+                android:paddingTop="@dimen/margin_8dp">
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0,1"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Unidade"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/cinza_escuro"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_id_unidade"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Portão"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/preto"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cargo"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/cinza_escuro"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_id_cargo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Caixa"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/preto"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Data Inclusão"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/cinza_escuro"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_id_data_inclusao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="13/05/2016"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/preto"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Data Expiração"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/cinza_escuro"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_id_data_expiracao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="14/05/2016"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/preto"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Remuneração"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/cinza_escuro"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_id_remuneracao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Portão"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/preto"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Requisitos"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/cinza_escuro"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_id_requisitos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Maior 18 anos"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/preto"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:layout_gravity="left"
+                            android:textSize="20dp"/>
+                    </TableRow>
+
+                </TableLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aplicar"
+                    android:textColor="@color/branco"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_marginTop="@dimen/fab_margin" />
+            </LinearLayout>
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

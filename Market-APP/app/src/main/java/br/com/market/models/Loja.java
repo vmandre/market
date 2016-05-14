@@ -1,6 +1,8 @@
 package br.com.market.models;
 
-public class Loja extends AbstractModel {
+import java.io.Serializable;
+
+public class Loja extends AbstractModel implements Serializable{
 
     private String nome;
 

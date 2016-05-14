@@ -1,8 +1,9 @@
 package br.com.market.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Vaga extends AbstractModel {
+public class Vaga extends AbstractModel implements Serializable{
 
     private Date dataAbertura;
     private String descricao;

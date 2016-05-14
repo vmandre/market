@@ -1,6 +1,8 @@
 package br.com.market.models;
 
-public class Cargo extends AbstractModel {
+import java.io.Serializable;
+
+public class Cargo extends AbstractModel implements Serializable{
 
     private String descricao;
 

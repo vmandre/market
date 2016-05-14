@@ -20,7 +20,6 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import br.com.market.R;
-import br.com.market.fragment.VagasDisponiveisFragment;
 import br.com.market.fragment.VagasDisponiveisFragment_;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;

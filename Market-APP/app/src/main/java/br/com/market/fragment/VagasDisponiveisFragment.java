@@ -1,14 +1,19 @@
 package br.com.market.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.Background;
@@ -22,6 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.market.R;
+import br.com.market.activities.DetalhesVagasActivity;
+import br.com.market.activities.DetalhesVagasActivity_;
 import br.com.market.adapter.VagasAdapter;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
@@ -29,7 +36,6 @@ import br.com.market.models.Cargo;
 import br.com.market.models.Funcionario;
 import br.com.market.models.Vaga;
 import br.com.market.services.MarketRestService;
-import br.com.market.services.MarketRestService_;
 
 @EFragment
 public class VagasDisponiveisFragment extends Fragment {
@@ -40,6 +46,8 @@ public class VagasDisponiveisFragment extends Fragment {
     MarketRestService marketService;
 
     private View view;
+
+    DetalhesVagasActivity detalhe = new DetalhesVagasActivity();
 
     public VagasDisponiveisFragment() {
     }
@@ -63,7 +71,32 @@ public class VagasDisponiveisFragment extends Fragment {
        //Recupera as listas de vagas do serviço e popula as list views.
        consultarListaVagasLoja(funcionarioLogado.getLoja().getCod());
        consultarListaVagasDiferenteLoja(funcionarioLogado.getLoja().getCod());
+
+       ListView suaUnidade = (ListView) view.findViewById(R.id.lv_sua_unidade);
+       suaUnidade.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               Vaga vaga = (Vaga) parent.getAdapter().getItem(position);
+
+               Intent intentFormulario = new Intent(getActivity(), DetalhesVagasActivity_.class);
+               intentFormulario.putExtra("VAGA", vaga);
+               startActivity(intentFormulario);
+           }
+       });
+
+       ListView outrasUnidade = (ListView) view.findViewById(R.id.lv_outras_unidades);
+       outrasUnidade.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               Vaga vaga = (Vaga) parent.getAdapter().getItem(position);
+
+               Intent intentFormulario = new Intent(getActivity(), DetalhesVagasActivity_.class);
+               intentFormulario.putExtra("VAGA", vaga);
+               startActivity(intentFormulario);
+           }
+       });
     }
+
 
     @Background
     public void consultarListaVagasLoja(Long idLoja) {
@@ -111,6 +144,7 @@ public class VagasDisponiveisFragment extends Fragment {
     void erroServico(String mensagem) {
         exibirToast(mensagem, Toast.LENGTH_LONG);
     }
+
 
     private void exibirToast(CharSequence mensagem, int duration) {
         Toast.makeText( getActivity().getApplicationContext(), mensagem, duration).show();
