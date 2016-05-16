@@ -129,7 +129,6 @@ public class MeusDadosFragment extends Fragment {
         if (txtEmail == null) {
             txtEmail = (TextView) view.findViewById(R.id.txtEmail);
         }
-
     }
 
     @UiThread

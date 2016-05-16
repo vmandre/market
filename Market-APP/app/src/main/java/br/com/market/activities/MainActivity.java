@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -65,8 +66,10 @@ public class MainActivity extends AppCompatActivity
             textMatriculaFuncionario.setText("Matrícula: " + funcionarioLogado.getMatricula().toString());
         }
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setIcon(R.drawable.logo_transparente);
 
         //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -116,12 +119,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_lista_vagas) {
             iniciaTrafment(this, new VagasDisponiveisFragment_());
+            alterarTituloActivity(getSupportActionBar(), R.string.vagas_disponiveis);
         }
         if (id == R.id.nv_meus_dados) {
             iniciaTrafment(this, new MeusDadosFragment_());
+            alterarTituloActivity(getSupportActionBar(), R.string.meus_dados);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
@@ -130,6 +136,14 @@ public class MainActivity extends AppCompatActivity
         t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         t.replace(R.id.fragment_principal, fragment);
         t.commit();
+    }
+
+    private void alterarTituloActivity(ActionBar bar, int titulo) {
+        bar.setDisplayHomeAsUpEnabled(false); //Set true para alterar o icone do hamburguer pela flecha
+        bar.setDisplayShowHomeEnabled(false);
+        bar.setDisplayShowTitleEnabled(true);
+        bar.setTitle(titulo);
+        bar.setDisplayUseLogoEnabled(false);
     }
 
 }
