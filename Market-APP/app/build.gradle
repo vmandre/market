@@ -67,4 +67,5 @@ dependencies {
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
     compile 'org.androidannotations:rest-spring-api:4.0.0'
     apt 'org.androidannotations:rest-spring:4.0.0'
+    compile 'com.android.support:cardview-v7:23.3.0'
 }
