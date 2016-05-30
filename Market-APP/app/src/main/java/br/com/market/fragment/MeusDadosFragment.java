@@ -60,8 +60,6 @@ public class MeusDadosFragment extends Fragment {
 
     private View view;
 
-    DetalhesVagasActivity detalhe = new DetalhesVagasActivity();
-
     public MeusDadosFragment() {
     }
 

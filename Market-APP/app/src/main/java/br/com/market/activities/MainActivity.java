@@ -21,7 +21,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import br.com.market.R;
+import br.com.market.fragment.HoleriteFragment_;
 import br.com.market.fragment.MeusDadosFragment_;
+import br.com.market.fragment.SolicitarFeriasFragment_;
 import br.com.market.fragment.VagasDisponiveisFragment_;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
@@ -124,6 +126,14 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nv_meus_dados) {
             iniciaTrafment(this, new MeusDadosFragment_());
             alterarTituloActivity(getSupportActionBar(), R.string.meus_dados);
+        }
+        if (id == R.id.nav_holerite) {
+            iniciaTrafment(this, new HoleriteFragment_());
+            alterarTituloActivity(getSupportActionBar(), R.string.holerite);
+        }
+        if (id == R.id.nav_solicitacao_ferias) {
+            iniciaTrafment(this, new SolicitarFeriasFragment_());
+            alterarTituloActivity(getSupportActionBar(), R.string.solicitacao_ferias);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
