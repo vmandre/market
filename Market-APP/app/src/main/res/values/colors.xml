@@ -5,9 +5,11 @@
     <color name="colorAccent">#FF4081</color>
 
     <!--CORES DA TELA DE LOGIN-->
-    <color name="branco">#fcfcfc</color>
+    <color name="branco">#ffffff</color>
+    <color name="branco_fundo">#fcfcfc</color>
 
     <color name="cinza_escuro">#868282</color>
     <color name="cinza">#c7c7c7</color>
     <color name="preto">#020202</color>
 </resources>
+

@@ -1,6 +1,9 @@
 package br.com.market.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -22,6 +25,7 @@ import org.androidannotations.annotations.ViewById;
 
 import br.com.market.R;
 import br.com.market.fragment.HoleriteFragment_;
+import br.com.market.fragment.HomeFragment_;
 import br.com.market.fragment.MeusDadosFragment_;
 import br.com.market.fragment.SolicitarFeriasFragment_;
 import br.com.market.fragment.VagasDisponiveisFragment_;
@@ -68,18 +72,16 @@ public class MainActivity extends AppCompatActivity
             textMatriculaFuncionario.setText("Matrícula: " + funcionarioLogado.getMatricula().toString());
         }
 
-//        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setIcon(R.drawable.logo_transparente);
+        getSupportActionBar().setIcon(getLogo());
+//        getSupportActionBar().setIcon(R.drawable.logo_transparente);
 
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -102,7 +104,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
@@ -119,20 +120,24 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (id == R.id.nav_home) {
+            iniciarFragment(this, new HomeFragment_());
+            alterarHomeActivity(getSupportActionBar());
+        }
         if (id == R.id.nav_lista_vagas) {
-            iniciaTrafment(this, new VagasDisponiveisFragment_());
+            iniciarFragment(this, new VagasDisponiveisFragment_());
             alterarTituloActivity(getSupportActionBar(), R.string.vagas_disponiveis);
         }
         if (id == R.id.nv_meus_dados) {
-            iniciaTrafment(this, new MeusDadosFragment_());
+            iniciarFragment(this, new MeusDadosFragment_());
             alterarTituloActivity(getSupportActionBar(), R.string.meus_dados);
         }
         if (id == R.id.nav_holerite) {
-            iniciaTrafment(this, new HoleriteFragment_());
+            iniciarFragment(this, new HoleriteFragment_());
             alterarTituloActivity(getSupportActionBar(), R.string.holerite);
         }
         if (id == R.id.nav_solicitacao_ferias) {
-            iniciaTrafment(this, new SolicitarFeriasFragment_());
+            iniciarFragment(this, new SolicitarFeriasFragment_());
             alterarTituloActivity(getSupportActionBar(), R.string.solicitacao_ferias);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -141,7 +146,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    void iniciaTrafment(final FragmentActivity activity, final Fragment fragment) {
+    void iniciarFragment(final FragmentActivity activity, final Fragment fragment) {
         FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
         t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         t.replace(R.id.fragment_principal, fragment);
@@ -154,6 +159,20 @@ public class MainActivity extends AppCompatActivity
         bar.setDisplayShowTitleEnabled(true);
         bar.setTitle(titulo);
         bar.setDisplayUseLogoEnabled(false);
+    }
+
+    private void alterarHomeActivity(ActionBar bar) {
+        bar.setDisplayHomeAsUpEnabled(false); //Set true para alterar o icone do hamburguer pela flecha
+        bar.setDisplayShowHomeEnabled(true);
+        bar.setDisplayUseLogoEnabled(true);
+        bar.setIcon(getLogo());
+        bar.setDisplayShowTitleEnabled(false);
+    }
+
+    private Drawable getLogo() {
+        Drawable dr = getResources().getDrawable(R.drawable.logo_transparente);
+        Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
+        return new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 200, 50, true));
     }
 
 }

@@ -33,5 +33,6 @@
     <string name="label_fim">Fim</string>
     <string name="btn_solicitar">Solicitar</string>
     <string name="label_observacao">Observação</string>
+    <string name="home">Home</string>
 
 </resources>

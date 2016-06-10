@@ -4,161 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/branco"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.market.activities.MainActivity"
-    android:background="@color/branco">
+    tools:context="br.com.market.activities.MainActivity">
 
-
-<LinearLayout
+    <LinearLayout
+        android:id="@+id/lnVagasDisponiveissLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/branco_fundo"
         android:orientation="vertical"
+        android:padding="10dp">
 
-        android:id="@+id/linearLayout2"
-        android:background="@color/branco"
-        android:weightSum="1"
-    android:layout_marginTop="5dp">
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:shape="oval"
+            app:cardBackgroundColor="@color/branco"
+            app:cardCornerRadius="5dp">
 
-    <android.support.v7.widget.CardView
-        android:layout_below="@+id/linearLayout_cabecalho"
-        android:layout_width="wrap_content"
-        android:layout_weight="0.5"
-        android:layout_height="wrap_content"
-        android:elevation="12dp"
-        app:cardCornerRadius="5dp"
-        android:layout_centerHorizontal="true"
-        android:shape="rectangle"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="@color/branco"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@color/branco"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/branco"
-            android:layout_margin="4dp"
-            android:paddingBottom="@dimen/margin_8dp"
-            android:paddingLeft="@dimen/margin_8dp"
-            android:paddingRight="@dimen/margin_8dp"
-            android:paddingTop="@dimen/margin_8dp">
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:stretchColumns="0,1">
 
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:stretchColumns="0,1"
-                android:padding="5dp"
-                android:layout_margin="5dp">
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="sans-serif"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:text="Minha Loja"
+                            android:textColor="@color/preto"
+                            android:textSize="15dp" />
 
+                        <ImageView
+                            android:id="@+id/iv_ver_mais_sua_unidade"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:background="@color/branco"
+                            android:src="@drawable/ic_list_black_48dp" />
+                    </TableRow>
+                </TableLayout>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sua Unidade"
-                        android:fontFamily="sans-serif"
-                        android:textColor="@color/preto"
-                        android:paddingBottom="@dimen/margin_8dp"
-                        android:paddingTop="@dimen/margin_8dp"
-                        android:layout_gravity="left"
-                        android:textSize="15dp"/>
+                <ListView
+                    android:id="@+id/lv_sua_unidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/branco" />
 
-                    <ImageView
-                        android:id="@+id/iv_ver_mais_sua_unidade"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_list_black_48dp"
-                        android:layout_alignParentRight="true"
-                        android:background="@color/branco"
-                        android:layout_gravity="right"/>
-                </TableRow>
-
-            </TableLayout>
-
-            <ListView
-                android:layout_below="@+id/linearLayout_cabecalho"
-                android:id="@+id/lv_sua_unidade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/branco" />
-
-        </LinearLayout>
-
-
+            </LinearLayout>
         </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:layout_below="@+id/linearLayout_cabecalho"
-        android:layout_weight="0.5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="12dp"
-        app:cardCornerRadius="5dp"
-        android:layout_centerHorizontal="true"
-        android:shape="rectangle"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="@color/branco"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
-
-
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/branco"
-            android:layout_margin="4dp"
-            android:paddingBottom="@dimen/margin_8dp"
-            android:paddingLeft="@dimen/margin_8dp"
-            android:paddingRight="@dimen/margin_8dp"
-            android:paddingTop="@dimen/margin_8dp">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_weight="0.5"
+            android:shape="rectangle"
+            app:cardBackgroundColor="@color/branco">
 
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:stretchColumns="0,1"
-                android:padding="5dp"
-                android:layout_margin="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@color/branco"
+                android:orientation="vertical">
 
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:stretchColumns="0,1">
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Outras Unidades"
-                        android:fontFamily="sans-serif"
-                        android:textColor="@color/preto"
-                        android:paddingBottom="@dimen/margin_8dp"
-                        android:paddingTop="@dimen/margin_8dp"
-                        android:textSize="15dp"/>
+                    <TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:paddingBottom="@dimen/margin_8dp"
+                            android:paddingTop="@dimen/margin_8dp"
+                            android:text="Outras Lojas"
+                            android:textColor="@color/preto"
+                            android:textSize="15dp" />
 
-                    <ImageView
-                        android:id="@+id/iv_ver_mais_outras_unidades"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_list_black_48dp"
-                        android:layout_alignParentRight="true"
-                        android:background="@color/branco"
-                        android:layout_gravity="right"/>
-                </TableRow>
+                        <ImageView
+                            android:id="@+id/iv_ver_mais_outras_unidades"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:background="@color/branco"
+                            android:src="@drawable/ic_list_black_48dp" />
+                    </TableRow>
 
-            </TableLayout>
+                </TableLayout>
 
-            <ListView
-                android:layout_below="@+id/linearLayout_cabecalho"
-                android:id="@+id/lv_outras_unidades"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/branco" />
-
-        </LinearLayout>
-
+                <ListView
+                    android:id="@+id/lv_outras_unidades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/branco" />
+            </LinearLayout>
         </android.support.v7.widget.CardView>
-
-
     </LinearLayout>
-
 </RelativeLayout>

@@ -5,4 +5,13 @@
     <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
     <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
     <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
+
+    <item name="ic_menu_home" type="drawable">@drawable/ic_menu_home</item>
+    <item name="ic_menu_meus_dados" type="drawable">@drawable/ic_person_outline_black_48dp</item>
+    <item name="ic_menu_holerite" type="drawable">@drawable/ic_receipt_black_48dp</item>
+    <item name="ic_menu_ferias" type="drawable">@drawable/ic_date_range_black_48dp</item>
+
+    <item name="ic_menu_vaga" type="drawable">@drawable/ic_assignment_ind_black_48dp</item>
+    <item name="ic_menu_noticias" type="drawable">@drawable/ic_assignment_black_48dp</item>
 </resources>
+

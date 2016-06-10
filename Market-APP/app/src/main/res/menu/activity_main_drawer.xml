@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/menu_group_1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/home" />
         <item
             android:id="@+id/nv_meus_dados"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_meus_dados"
             android:title="@string/meus_dados" />
         <item
             android:id="@+id/nav_holerite"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_holerite"
             android:title="@string/holerite" />
 
         <item
             android:id="@+id/nav_solicitacao_ferias"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_menu_ferias"
             android:title="@string/solicitacao_ferias" />
 
     </group>
 
-    <item android:title="@string/market_area">
-        <menu>
-            <item
-                android:id="@+id/nav_lista_vagas"
-                android:icon="@drawable/ic_menu_gallery"
-                android:title="@string/vagas_disponiveis" />
+    <group android:id="@+id/menu_group_2"
+        android:checkableBehavior="single">
+        <item android:title="@string/market_area">
+            <menu>
+                <item
+                    android:id="@+id/nav_lista_vagas"
+                    android:icon="@drawable/ic_menu_vaga"
+                    android:title="@string/vagas_disponiveis" />
 
-            <item
-                android:id="@+id/nav_lista_noticias"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/noticias" />
-        </menu>
-    </item>
+                <item
+                    android:id="@+id/nav_lista_noticias"
+                    android:icon="@drawable/ic_menu_noticias"
+                    android:title="@string/noticias" />
+            </menu>
+        </item>
+    </group>
 
-    <item android:title="">
-        <menu>
-            <item
-                android:id="@+id/nav_configuracao"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/configuracao" />
-        </menu>
-    </item>
+    <group android:id="@+id/menu_group_3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_configuracao"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/configuracao" />
+    </group>
 
 </menu>
