@@ -7,18 +7,22 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
 
-public class DataHoleriteListener extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+import br.com.market.R;
 
-    private static final String TAG = "DataHoleriteListener";
+public class DataPickerListener extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+    private static final String TAG = "DataPickerListener";
+    private Button buttonRetorno;
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         Log.i(TAG, "METHOD: onDateSet");
-
+        buttonRetorno.setText(i2 + "/" + i1 + "/" + i);
     }
 
     @Override
@@ -30,10 +34,10 @@ public class DataHoleriteListener extends DialogFragment implements DatePickerDi
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        // Create a new instance of DatePickerDialog and return it
-        Dialog datePicker = new DatePickerDialog(getActivity(), this, year, month, day);
+        return new DatePickerDialog(getActivity(), this, year, month, day);
+    }
 
-        datePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).setVisibility(View.GONE);
-        return  datePicker;
+    public void setButtonRetorno(Button buttonRetorno) {
+        this.buttonRetorno = buttonRetorno;
     }
 }

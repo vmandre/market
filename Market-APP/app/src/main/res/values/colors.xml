@@ -6,10 +6,10 @@
 
     <!--CORES DA TELA DE LOGIN-->
     <color name="branco">#ffffff</color>
-    <color name="branco_fundo">#fcfcfc</color>
+    <color name="branco_fundo">#f5f5f5</color>
 
     <color name="cinza_escuro">#868282</color>
     <color name="cinza">#c7c7c7</color>
-    <color name="preto">#020202</color>
+    <color name="preto">#000000</color>
 </resources>
 

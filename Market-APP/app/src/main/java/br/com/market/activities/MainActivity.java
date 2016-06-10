@@ -155,6 +155,15 @@ public class MainActivity extends AppCompatActivity
 
     private void alterarTituloActivity(ActionBar bar, int titulo) {
         bar.setDisplayHomeAsUpEnabled(false); //Set true para alterar o icone do hamburguer pela flecha
+        alterarTituloBarraActivity(bar, titulo);
+    }
+
+    public void alterarTituloDetalhesActivity(ActionBar bar, int titulo) {
+        bar.setDisplayHomeAsUpEnabled(true);
+        alterarTituloBarraActivity(bar, titulo);
+    }
+
+    private void alterarTituloBarraActivity(ActionBar bar, int titulo) {
         bar.setDisplayShowHomeEnabled(false);
         bar.setDisplayShowTitleEnabled(true);
         bar.setTitle(titulo);

@@ -14,17 +14,17 @@ import br.com.market.models.Vaga;
 
 /**
  * Adapter responsavel por exibir a lista vaga - tela inicial
- * @author TIVIT
- * @since 29/04/2016.
  */
 public class VagasAdapter extends BaseAdapter {
 
     private Context context;
     private List<Vaga> vagas;
+    private Boolean exibeLocalizacao;
 
-    public VagasAdapter(final Context context, final List<Vaga> vagas) {
+    public VagasAdapter(final Context context, final List<Vaga> vagas, Boolean exibeLocalizacao) {
         this.context = context;
         this.vagas = vagas;
+        this.exibeLocalizacao = exibeLocalizacao;
     }
 
     @Override
@@ -59,15 +59,19 @@ public class VagasAdapter extends BaseAdapter {
         }
 
         holder.tvVaga.setText(vaga.getCargo().getDescricao());
+        if (exibeLocalizacao.booleanValue()) {
+            holder.tvLocalizacao.setText(vaga.getLoja().getNome());
+        }
 
         return linha;
     }
 
     class ViewHolder {
         TextView tvVaga;
-
+        TextView tvLocalizacao;
         ViewHolder(View view) {
             this.tvVaga = (TextView) view.findViewById(R.id.tv_vaga);
+            this.tvLocalizacao = (TextView) view.findViewById(R.id.tv_localizacao);
         }
     }
 }

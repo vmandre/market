@@ -41,20 +41,13 @@
                     android:textSize="15sp" />
 
                 <DatePicker
+                    android:id="@+id/dataHolerite"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:calendarViewShown="false"
-                    android:datePickerMode="spinner"
-                    >
+                    android:datePickerMode="spinner">
 
                 </DatePicker>
-
-                <!--<Button-->
-                    <!--android:id="@+id/btn_dataHolerite"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:onClick="showDatePickerDialog"-->
-                    <!--android:padding="10dp"/>-->
 
                 <View
                     android:layout_width="match_parent"

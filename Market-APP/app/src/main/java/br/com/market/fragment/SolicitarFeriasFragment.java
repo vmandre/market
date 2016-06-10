@@ -15,10 +15,8 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 
-import java.text.SimpleDateFormat;
-
 import br.com.market.R;
-import br.com.market.listeners.DataHoleriteListener;
+import br.com.market.listeners.DataPickerListener;
 import br.com.market.services.MarketRestService;
 
 @EFragment(R.layout.fragment_solicitar_ferias)
@@ -35,15 +33,10 @@ public class SolicitarFeriasFragment extends Fragment {
 
     private View view;
 
-    public SolicitarFeriasFragment() {
-    }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "METHOD: onCreateView");
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_solicitar_ferias, container, false);
-        //Inicia os campos necessários caso não tenha sido injetado.
-        initFields();
         // Inicia Listeners
         initScreen(view);
         // Retorna view
@@ -53,22 +46,15 @@ public class SolicitarFeriasFragment extends Fragment {
     private void initScreen(final View view) {
         Log.i(TAG, "METHOD: initScreen");
 
-//        Funcionario funcionarioLogado = (Funcionario) Utils.jsonToObject(
-//                ParametrosAplicacao.getParametro(getActivity().getApplicationContext(), ParametrosAplicacao.CHAVE_FUNCIONARIO_LOGADO), Funcionario.class);
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/yyyy");
-
-        //dataHolerite.setText(sdf.format(new Date()));
-    }
-
-    private void initFields() {
         if (dataInicio == null) {
             dataInicio = (Button) view.findViewById(R.id.btnInicio);
         }
         dataInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new DataHoleriteListener();
-                newFragment.show(getFragmentManager(), "datePicker");
+                DialogFragment newFragment = new DataPickerListener();
+                ((DataPickerListener)newFragment).setButtonRetorno(dataInicio);
+                newFragment.show(getFragmentManager(), "dataInicioPicker");
             }
         });
 
@@ -78,8 +64,9 @@ public class SolicitarFeriasFragment extends Fragment {
         dataFim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new DataHoleriteListener();
-                newFragment.show(getFragmentManager(), "datePicker");
+                DialogFragment newFragment = new DataPickerListener();
+                ((DataPickerListener)newFragment).setButtonRetorno(dataFim);
+                newFragment.show(getFragmentManager(), "dataFimPicker");
             }
         });
     }

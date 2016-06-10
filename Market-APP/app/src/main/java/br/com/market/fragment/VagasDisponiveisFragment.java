@@ -1,38 +1,33 @@
 package br.com.market.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.UiThread;
-import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.market.R;
-import br.com.market.activities.DetalhesVagasActivity;
 import br.com.market.activities.DetalhesVagasActivity_;
+import br.com.market.activities.MainActivity;
 import br.com.market.adapter.VagasAdapter;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
-import br.com.market.models.Cargo;
 import br.com.market.models.Funcionario;
 import br.com.market.models.Vaga;
 import br.com.market.services.MarketRestService;
@@ -46,11 +41,6 @@ public class VagasDisponiveisFragment extends Fragment {
     MarketRestService marketService;
 
     private View view;
-
-    DetalhesVagasActivity detalhe = new DetalhesVagasActivity();
-
-    public VagasDisponiveisFragment() {
-    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "METHOD: onCreateView");
@@ -76,11 +66,15 @@ public class VagasDisponiveisFragment extends Fragment {
        suaUnidade.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               Vaga vaga = (Vaga) parent.getAdapter().getItem(position);
+//               Vaga vaga = (Vaga) parent.getAdapter().getItem(position);
+//
+//               Intent intentFormulario = new Intent(getActivity(), DetalhesVagasActivity_.class);
+//               intentFormulario.putExtra("VAGA", vaga);
+//               startActivity(intentFormulario);
 
-               Intent intentFormulario = new Intent(getActivity(), DetalhesVagasActivity_.class);
-               intentFormulario.putExtra("VAGA", vaga);
-               startActivity(intentFormulario);
+               iniciarFragment(getActivity(), new SolicitarFeriasFragment_());
+               ((MainActivity)getActivity()).alterarTituloDetalhesActivity(((MainActivity)getActivity()).getSupportActionBar(), R.string.detalhes_vaga);
+               //alterarTituloActivity((, R.string.solicitacao_ferias);
            }
        });
 
@@ -96,7 +90,6 @@ public class VagasDisponiveisFragment extends Fragment {
            }
        });
     }
-
 
     @Background
     public void consultarListaVagasLoja(Long idLoja) {
@@ -130,14 +123,29 @@ public class VagasDisponiveisFragment extends Fragment {
     void createListaVagasMeuLocal(List<Vaga> vagas) {
         Log.i(TAG, "METHOD: createListaVagasMeuLocal");
         ListView lvSuaUnidade = (ListView) view.findViewById(R.id.lv_sua_unidade);
-        lvSuaUnidade.setAdapter(new VagasAdapter(getActivity(), vagas));
+        lvSuaUnidade.setAdapter(new VagasAdapter(getActivity(), vagas, Boolean.FALSE));
     }
 
     @UiThread
     void createListaVagasDiferenteLocal(List<Vaga> vagas) {
         Log.i(TAG, "METHOD: createListaVagasDiferenteLocal");
         ListView lvOutrasUnidade = (ListView) view.findViewById(R.id.lv_outras_unidades);
-        lvOutrasUnidade.setAdapter(new VagasAdapter(getActivity(), vagas));
+        lvOutrasUnidade.setAdapter(new VagasAdapter(getActivity(), vagas, Boolean.TRUE));
+    }
+
+    private void alterarTituloActivity(ActionBar bar, int titulo) {
+        bar.setDisplayHomeAsUpEnabled(true);
+        bar.setDisplayShowHomeEnabled(false);
+        bar.setDisplayShowTitleEnabled(true);
+        bar.setTitle(titulo);
+        bar.setDisplayUseLogoEnabled(false);
+    }
+
+    void iniciarFragment(final FragmentActivity activity, final Fragment fragment) {
+        FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
+        t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        t.replace(R.id.fragment_principal, fragment);
+        t.commit();
     }
 
     @UiThread
