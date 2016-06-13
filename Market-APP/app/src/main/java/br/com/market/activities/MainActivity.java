@@ -1,14 +1,17 @@
 package br.com.market.activities;
 
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -75,7 +78,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setIcon(getLogo());
-//        getSupportActionBar().setIcon(R.drawable.logo_transparente);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        Log.i(TAG, "METHOD: onBackPressed");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.i(TAG, "METHOD: onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -104,6 +108,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.i(TAG, "METHOD: onOptionsItemSelected");
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
@@ -117,55 +122,69 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Log.i(TAG, "METHOD: onNavigationItemSelected");
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            iniciarFragment(this, new HomeFragment_());
-            alterarHomeActivity(getSupportActionBar());
-        }
-        if (id == R.id.nav_lista_vagas) {
-            iniciarFragment(this, new VagasDisponiveisFragment_());
-            alterarTituloActivity(getSupportActionBar(), R.string.vagas_disponiveis);
-        }
-        if (id == R.id.nv_meus_dados) {
-            iniciarFragment(this, new MeusDadosFragment_());
-            alterarTituloActivity(getSupportActionBar(), R.string.meus_dados);
-        }
-        if (id == R.id.nav_holerite) {
-            iniciarFragment(this, new HoleriteFragment_());
-            alterarTituloActivity(getSupportActionBar(), R.string.holerite);
-        }
-        if (id == R.id.nav_solicitacao_ferias) {
-            iniciarFragment(this, new SolicitarFeriasFragment_());
-            alterarTituloActivity(getSupportActionBar(), R.string.solicitacao_ferias);
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                iniciarFragment(this, new HomeFragment_());
+                alterarHomeActivity(getSupportActionBar());
+                break;
+            case R.id.nav_lista_vagas:
+                iniciarFragment(this, new VagasDisponiveisFragment_());
+                alterarTituloActivity(getSupportActionBar(), R.string.vagas_disponiveis);
+                break;
+            case R.id.nv_meus_dados:
+                iniciarFragment(this, new MeusDadosFragment_());
+                alterarTituloActivity(getSupportActionBar(), R.string.meus_dados);
+                break;
+            case R.id.nav_holerite:
+                iniciarFragment(this, new HoleriteFragment_());
+                alterarTituloActivity(getSupportActionBar(), R.string.holerite);
+                break;
+            case R.id.nav_solicitacao_ferias:
+                iniciarFragment(this, new SolicitarFeriasFragment_());
+                alterarTituloActivity(getSupportActionBar(), R.string.solicitacao_ferias);
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
-    void iniciarFragment(final FragmentActivity activity, final Fragment fragment) {
+    public void iniciarFragment(final FragmentActivity activity, final Fragment fragment) {
         FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
         t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        t.replace(R.id.fragment_principal, fragment);
+        t.addToBackStack(null);
+        t.commit();
+    }
+
+    public void iniciarFragmentComVoltar(final FragmentActivity activity, final Fragment fragment) {
+        FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
+        t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+
+        if (t.isAddToBackStackAllowed()) {
+            Log.i(TAG, "%%%%%%%%%%%% PODE VOLTAR %%%%%%%%%%%%%%%%%%%");
+        }
         t.replace(R.id.fragment_principal, fragment);
         t.commit();
     }
 
     private void alterarTituloActivity(ActionBar bar, int titulo) {
         bar.setDisplayHomeAsUpEnabled(false); //Set true para alterar o icone do hamburguer pela flecha
+        bar.setDisplayShowHomeEnabled(false);
         alterarTituloBarraActivity(bar, titulo);
     }
 
     public void alterarTituloDetalhesActivity(ActionBar bar, int titulo) {
         bar.setDisplayHomeAsUpEnabled(true);
+        bar.setDisplayShowHomeEnabled(true);
         alterarTituloBarraActivity(bar, titulo);
     }
 
     private void alterarTituloBarraActivity(ActionBar bar, int titulo) {
         bar.setDisplayShowHomeEnabled(false);
-        bar.setDisplayShowTitleEnabled(true);
         bar.setTitle(titulo);
         bar.setDisplayUseLogoEnabled(false);
     }
@@ -183,5 +202,4 @@ public class MainActivity extends AppCompatActivity
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
         return new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 200, 50, true));
     }
-
 }

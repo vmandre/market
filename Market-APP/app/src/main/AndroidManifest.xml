@@ -33,11 +33,5 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity
-            android:name=".activities.DetalhesVagasActivity_"
-            android:label="@string/app_detalhes_vaga">
-        </activity>
-
     </application>
-
 </manifest>

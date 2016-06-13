@@ -1,12 +1,7 @@
 package br.com.market.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +18,6 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import java.util.List;
 
 import br.com.market.R;
-import br.com.market.activities.DetalhesVagasActivity_;
 import br.com.market.activities.MainActivity;
 import br.com.market.adapter.VagasAdapter;
 import br.com.market.infra.ParametrosAplicacao;
@@ -32,7 +26,7 @@ import br.com.market.models.Funcionario;
 import br.com.market.models.Vaga;
 import br.com.market.services.MarketRestService;
 
-@EFragment
+@EFragment(R.layout.fragment_vagas_disponiveis)
 public class VagasDisponiveisFragment extends Fragment {
 
     private static final String TAG = "VagasDisponiveis";
@@ -66,15 +60,16 @@ public class VagasDisponiveisFragment extends Fragment {
        suaUnidade.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//               Vaga vaga = (Vaga) parent.getAdapter().getItem(position);
+               Vaga vaga = (Vaga) parent.getAdapter().getItem(position);
 //
 //               Intent intentFormulario = new Intent(getActivity(), DetalhesVagasActivity_.class);
 //               intentFormulario.putExtra("VAGA", vaga);
 //               startActivity(intentFormulario);
-
-               iniciarFragment(getActivity(), new SolicitarFeriasFragment_());
+               VagaDetalhesFragment_ detalheFragmant = new VagaDetalhesFragment_();
+               ((MainActivity)getActivity()).iniciarFragmentComVoltar(getActivity(), detalheFragmant);
                ((MainActivity)getActivity()).alterarTituloDetalhesActivity(((MainActivity)getActivity()).getSupportActionBar(), R.string.detalhes_vaga);
-               //alterarTituloActivity((, R.string.solicitacao_ferias);
+
+               detalheFragmant.setVaga(vaga);
            }
        });
 
@@ -84,9 +79,14 @@ public class VagasDisponiveisFragment extends Fragment {
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                Vaga vaga = (Vaga) parent.getAdapter().getItem(position);
 
-               Intent intentFormulario = new Intent(getActivity(), DetalhesVagasActivity_.class);
-               intentFormulario.putExtra("VAGA", vaga);
-               startActivity(intentFormulario);
+//               Intent intentFormulario = new Intent(getActivity(), DetalhesVagasActivity_.class);
+//               intentFormulario.putExtra("VAGA", vaga);
+//               startActivity(intentFormulario);
+               VagaDetalhesFragment_ detalheFragmant = new VagaDetalhesFragment_();
+               ((MainActivity)getActivity()).iniciarFragment(getActivity(), detalheFragmant);
+               ((MainActivity)getActivity()).alterarTituloDetalhesActivity(((MainActivity)getActivity()).getSupportActionBar(), R.string.detalhes_vaga);
+
+               detalheFragmant.setVaga(vaga);
            }
        });
     }
@@ -133,26 +133,10 @@ public class VagasDisponiveisFragment extends Fragment {
         lvOutrasUnidade.setAdapter(new VagasAdapter(getActivity(), vagas, Boolean.TRUE));
     }
 
-    private void alterarTituloActivity(ActionBar bar, int titulo) {
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setDisplayShowHomeEnabled(false);
-        bar.setDisplayShowTitleEnabled(true);
-        bar.setTitle(titulo);
-        bar.setDisplayUseLogoEnabled(false);
-    }
-
-    void iniciarFragment(final FragmentActivity activity, final Fragment fragment) {
-        FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
-        t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        t.replace(R.id.fragment_principal, fragment);
-        t.commit();
-    }
-
     @UiThread
     void erroServico(String mensagem) {
         exibirToast(mensagem, Toast.LENGTH_LONG);
     }
-
 
     private void exibirToast(CharSequence mensagem, int duration) {
         Toast.makeText( getActivity().getApplicationContext(), mensagem, duration).show();

@@ -35,5 +35,10 @@
     <string name="label_observacao">Observação</string>
     <string name="home">Home</string>
     <string name="detalhes_vaga">Detalhes Vaga</string>
+    <string name="label_unidade">Unidade</string>
+    <string name="label_data_inclusao">Data Inclusão</string>
+    <string name="label_data_expiracao">Data Expiração</string>
+    <string name="label_remuneracao">Remuneração</string>
+    <string name="label_requisitos">Requisitos</string>
 
 </resources>

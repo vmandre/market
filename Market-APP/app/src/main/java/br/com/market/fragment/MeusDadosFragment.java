@@ -1,35 +1,25 @@
 package br.com.market.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import br.com.market.R;
-import br.com.market.activities.DetalhesVagasActivity;
-import br.com.market.activities.DetalhesVagasActivity_;
-import br.com.market.adapter.VagasAdapter;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
 import br.com.market.models.Funcionario;
-import br.com.market.models.Vaga;
 import br.com.market.services.MarketRestService;
 
 @EFragment(R.layout.fragment_meus_dados)
