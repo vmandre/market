@@ -65,4 +65,14 @@ public class NoticiaController extends AbstractController<Noticia> {
 		return noticiaService.noticiasDiferenteLoja(codLoja);
 	}
 	
+	@RequestMapping(value = "/listaRapidaPorLoja", method = RequestMethod.POST)
+	public @ResponseBody List<Noticia> noticiasListaRapiadaPorLoja(Long codLoja, Integer limite) {
+		return noticiaService.noticiasListaRapida(codLoja, limite);
+	}
+	
+	@RequestMapping(value = "/listarRapidaDiferenteLoja", method = RequestMethod.POST)
+	public @ResponseBody List<Noticia> noticiasListaRapidaDifennteLoja(Long codLoja, Integer limite) {
+		return noticiaService.noticiasListaRapidaDiferenteLoja(codLoja, limite);
+	}
+	
 }
