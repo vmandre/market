@@ -18,6 +18,7 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import java.util.Calendar;
 
 import br.com.market.R;
+import br.com.market.activities.MainActivity;
 import br.com.market.services.MarketRestService;
 
 @EFragment(R.layout.fragment_holerite)
@@ -44,6 +45,7 @@ public class HoleriteFragment extends Fragment {
 
     private void initScreen(final View view) {
         Log.i(TAG, "METHOD: initScreen");
+
         Calendar mCalendar = Calendar.getInstance();
         if (datePicker == null) {
             datePicker = (DatePicker) view.findViewById(R.id.dataHolerite);

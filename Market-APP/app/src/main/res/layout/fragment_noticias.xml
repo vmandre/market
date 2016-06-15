@@ -9,7 +9,7 @@
     tools:context="br.com.market.activities.MainActivity">
 
     <LinearLayout
-        android:id="@+id/lnVagasDisponiveisLayout"
+        android:id="@+id/lnNoticiasLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/branco_fundo"
@@ -52,7 +52,7 @@
                             android:textSize="15dp" />
 
                         <TextView
-                            android:id="@+id/txtMaisVagasMinhaLoja"
+                            android:id="@+id/txtMaisNoticiasMinhaLoja"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
@@ -71,7 +71,7 @@
                     android:background="@color/cinza_claro" />
 
                 <ListView
-                    android:id="@+id/lvMinhaLoja"
+                    android:id="@+id/lvNoticiasMinhaLoja"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/branco" />
@@ -114,7 +114,7 @@
                             android:textSize="15dp" />
 
                         <TextView
-                            android:id="@+id/txtMaisVagasOutrasLojas"
+                            android:id="@+id/txtMaisNoticiasOutrasLojas"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
@@ -132,7 +132,7 @@
                     android:background="@color/cinza_claro" />
 
                 <ListView
-                    android:id="@+id/lvOutrasLojas"
+                    android:id="@+id/lvNoticiasOutrasLojas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/branco" />

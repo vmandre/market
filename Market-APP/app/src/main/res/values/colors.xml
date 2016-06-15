@@ -10,6 +10,7 @@
 
     <color name="cinza_escuro">#868282</color>
     <color name="cinza">#c7c7c7</color>
+    <color name="cinza_claro">#ddd</color>
     <color name="preto">#000000</color>
 </resources>
 

@@ -8,19 +8,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@color/branco"
-        android:columnCount="2"
         android:padding="3dp">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="5dp"
-            android:background="@drawable/image_oval"
-            android:src="@drawable/ic_person_outline_black_48dp"
-            android:layout_rowSpan="2"/>
-
         <TextView
-            android:id="@+id/tv_vaga"
+            android:id="@+id/txtNoticiaTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/preto"
@@ -30,7 +21,7 @@
             android:layout_marginLeft="20dp"/>
 
         <TextView
-            android:id="@+id/tv_localizacao"
+            android:id="@+id/txtNoticiaLoja"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/preto"

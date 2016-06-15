@@ -15,6 +15,7 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import java.text.SimpleDateFormat;
 
 import br.com.market.R;
+import br.com.market.activities.MainActivity;
 import br.com.market.services.MarketRestService;
 
 @EFragment(R.layout.fragment_home)

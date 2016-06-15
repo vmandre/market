@@ -91,8 +91,6 @@ public class VagaDetalhesFragment extends Fragment {
         }
     }
 
-
-
     @UiThread
     void erroServico(String mensagem) {
         exibirToast(mensagem, Toast.LENGTH_LONG);

@@ -1,26 +1,24 @@
 package br.com.market.activities;
 
-import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import org.androidannotations.annotations.EActivity;
@@ -30,6 +28,7 @@ import br.com.market.R;
 import br.com.market.fragment.HoleriteFragment_;
 import br.com.market.fragment.HomeFragment_;
 import br.com.market.fragment.MeusDadosFragment_;
+import br.com.market.fragment.NoticiasFragment_;
 import br.com.market.fragment.SolicitarFeriasFragment_;
 import br.com.market.fragment.VagasDisponiveisFragment_;
 import br.com.market.infra.ParametrosAplicacao;
@@ -64,7 +63,6 @@ public class MainActivity extends AppCompatActivity
         if (funcionarioLogado == null) {
             //TODO NAO ENCOTROU O USUARIO, SOLICITAR LOGIN
         } else {
-            //View header = navigationView.inflateHeaderView(R.layout.nav_header_main);
             View header = navigationView.inflateHeaderView(R.layout.nav_header_main);
             navigationView.removeHeaderView(header);
             navigationView.addHeaderView(header);
@@ -79,12 +77,16 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setIcon(getLogo());
 
+        createActionBar();
+
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void createActionBar() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -114,6 +116,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             Intent it = new Intent(MainActivity.this, LoginActivity_.class);
             startActivity(it);
+        } else {
+            iniciarFragment(this, new VagasDisponiveisFragment_());
+            alterarTituloActivity(getSupportActionBar(), getString(R.string.vagas_disponiveis));
+
+            Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(myChildToolbar);
+            createActionBar();
         }
 
         return super.onOptionsItemSelected(item);
@@ -131,25 +140,30 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_lista_vagas:
                 iniciarFragment(this, new VagasDisponiveisFragment_());
-                alterarTituloActivity(getSupportActionBar(), R.string.vagas_disponiveis);
+                alterarTituloActivity(getSupportActionBar(), item.getTitle().toString());
                 break;
-            case R.id.nv_meus_dados:
+            case R.id.nav_meus_dados:
                 iniciarFragment(this, new MeusDadosFragment_());
-                alterarTituloActivity(getSupportActionBar(), R.string.meus_dados);
+                alterarTituloActivity(getSupportActionBar(), item.getTitle().toString());
                 break;
             case R.id.nav_holerite:
                 iniciarFragment(this, new HoleriteFragment_());
-                alterarTituloActivity(getSupportActionBar(), R.string.holerite);
+                alterarTituloActivity(getSupportActionBar(), item.getTitle().toString());
                 break;
             case R.id.nav_solicitacao_ferias:
                 iniciarFragment(this, new SolicitarFeriasFragment_());
-                alterarTituloActivity(getSupportActionBar(), R.string.solicitacao_ferias);
+                alterarTituloActivity(getSupportActionBar(), item.getTitle().toString());
+                break;
+            case R.id.nav_lista_noticias:
+                iniciarFragment(this, new NoticiasFragment_());
+                alterarTituloActivity(getSupportActionBar(), item.getTitle().toString());
                 break;
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
-        return super.onOptionsItemSelected(item);
+        return true;
+        //return super.onOptionsItemSelected(item);
     }
 
     public void iniciarFragment(final FragmentActivity activity, final Fragment fragment) {
@@ -160,38 +174,43 @@ public class MainActivity extends AppCompatActivity
         t.commit();
     }
 
-    public void iniciarFragmentComVoltar(final FragmentActivity activity, final Fragment fragment) {
-        FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
-        t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//    public void iniciarFragmentComVoltar(final FragmentActivity activity, final Fragment fragment) {
+//        FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
+//        t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//
+//        if (t.isAddToBackStackAllowed()) {
+//            Log.i(TAG, "%%%%%%%%%%%% PODE VOLTAR %%%%%%%%%%%%%%%%%%%");
+//        }
+//        t.replace(R.id.fragment_principal, fragment);
+//        t.commit();
+//    }
 
-        if (t.isAddToBackStackAllowed()) {
-            Log.i(TAG, "%%%%%%%%%%%% PODE VOLTAR %%%%%%%%%%%%%%%%%%%");
-        }
-        t.replace(R.id.fragment_principal, fragment);
-        t.commit();
-    }
-
-    private void alterarTituloActivity(ActionBar bar, int titulo) {
+    public void alterarTituloActivity(ActionBar bar, String titulo) {
         bar.setDisplayHomeAsUpEnabled(false); //Set true para alterar o icone do hamburguer pela flecha
-        bar.setDisplayShowHomeEnabled(false);
         alterarTituloBarraActivity(bar, titulo);
     }
 
-    public void alterarTituloDetalhesActivity(ActionBar bar, int titulo) {
+    public void alterarTituloDetalhesActivity(ActionBar bar, String titulo) {
+        Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myChildToolbar);
+
         bar.setDisplayHomeAsUpEnabled(true);
-        bar.setDisplayShowHomeEnabled(true);
+        //bar.setDisplayShowHomeEnabled(true);
         alterarTituloBarraActivity(bar, titulo);
+
+
     }
 
-    private void alterarTituloBarraActivity(ActionBar bar, int titulo) {
+    private void alterarTituloBarraActivity(ActionBar bar, String titulo) {
         bar.setDisplayShowHomeEnabled(false);
+        bar.setDisplayShowTitleEnabled(true);
         bar.setTitle(titulo);
         bar.setDisplayUseLogoEnabled(false);
     }
 
     private void alterarHomeActivity(ActionBar bar) {
         bar.setDisplayHomeAsUpEnabled(false); //Set true para alterar o icone do hamburguer pela flecha
-        bar.setDisplayShowHomeEnabled(true);
+        bar.setDisplayShowHomeEnabled(false);
         bar.setDisplayUseLogoEnabled(true);
         bar.setIcon(getLogo());
         bar.setDisplayShowTitleEnabled(false);

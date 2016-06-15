@@ -56,9 +56,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="0.1dp"
                         android:layout_columnSpan="2"
-                        android:background="@android:color/darker_gray" />
+                        android:background="@color/cinza_claro" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -80,9 +80,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="0.1dp"
                         android:layout_columnSpan="2"
-                        android:background="@android:color/darker_gray" />
+                        android:background="@color/cinza_claro" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -104,9 +104,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="0.1dp"
                         android:layout_columnSpan="2"
-                        android:background="@android:color/darker_gray" />
+                        android:background="@color/cinza_claro" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -128,9 +128,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="0.1dp"
                         android:layout_columnSpan="2"
-                        android:background="@android:color/darker_gray" />
+                        android:background="@color/cinza_claro" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -152,9 +152,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="0.1dp"
                         android:layout_columnSpan="2"
-                        android:background="@android:color/darker_gray" />
+                        android:background="@color/cinza_claro" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -176,9 +176,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="0.1dp"
                         android:layout_columnSpan="2"
-                        android:background="@android:color/darker_gray" />
+                        android:background="@color/cinza_claro" />
 
                     <Button
                         android:id="@+id/btnAplicar"
