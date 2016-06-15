@@ -15,6 +15,8 @@ public class VagaService extends EntityService<Vaga> {
 	@Autowired
 	private VagaRepository repository;
 	
+	private Integer LIMITE = new Integer(3);
+	
 	@Autowired
 	public VagaService(VagaRepository repository) {
 		super(repository);
@@ -40,5 +42,35 @@ public class VagaService extends EntityService<Vaga> {
 	public List<Vaga> vagasDiferenteLoja(Long codLoja) {
 		return repository.vagasDiferenteLoja(codLoja);
 	}
+
+	/**
+	 * Consulta vagas para loja do codigo informado e com limite de resultado.
+	 * 
+	 * @param codLoja
+	 * @param limite
+	 * @return
+	 */
+	public List<Vaga> vagasListaRapida(Long codLoja, Integer limite) {
+		if (limite == null) {
+			limite = LIMITE;
+		}
+		return repository.vagasListaRapidaPorLoja(codLoja, limite);
+	}
+
+	/**
+	 * Consulta vagas para lojas diferentes do codigo informado e com limite de resultado.
+	 * 
+	 * @param codLoja
+	 * @param limite
+	 * @return
+	 */
+	public List<Vaga> vagasListaRapidaDiferenteLoja(Long codLoja, Integer limite) {
+		if (limite == null) {
+			limite = LIMITE;
+		}
+		return repository.vagasListaRapidaDiferenteLoja(codLoja, limite);
+	}
+	
+	
 
 }

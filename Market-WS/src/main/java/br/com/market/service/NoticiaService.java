@@ -15,6 +15,8 @@ public class NoticiaService extends EntityService<Noticia> {
 	@Autowired
 	private NoticiaRepository repository;
 	
+	private Integer LIMITE = new Integer(3);
+	
 	@Autowired
 	public NoticiaService(NoticiaRepository repository) {
 		super(repository);
@@ -39,6 +41,34 @@ public class NoticiaService extends EntityService<Noticia> {
 	 */
 	public List<Noticia> noticiasDiferenteLoja(Long codLoja) {
 		return repository.noticiasDiferenteLoja(codLoja);
+	}
+	
+	/**
+	 * Consulta vagas para loja do codigo informado e com limite de resultado.
+	 * 
+	 * @param codLoja
+	 * @param limite
+	 * @return
+	 */
+	public List<Noticia> noticiasListaRapida(Long codLoja, Integer limite) {
+		if (limite == null) {
+			limite = LIMITE;
+		}
+		return repository.noticiasListaRapidaPorLoja(codLoja, limite);
+	}
+	
+	/**
+	 * Consulta vagas para lojas diferentes do codigo informado e com limite de resultado.
+	 * 
+	 * @param codLoja
+	 * @param limite
+	 * @return
+	 */
+	public List<Noticia> noticiasListaRapidaDiferenteLoja(Long codLoja, Integer limite) {
+		if (limite == null) {
+			limite = LIMITE;
+		}
+		return repository.noticiasListaRapidaDiferenteLoja(codLoja, limite);
 	}
 
 }

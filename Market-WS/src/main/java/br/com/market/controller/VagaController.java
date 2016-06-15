@@ -65,4 +65,14 @@ public class VagaController extends AbstractController<Vaga> {
 		return vagaService.vagasDiferenteLoja(codLoja);
 	}
 	
+	@RequestMapping(value = "/listaRapidaPorLoja", method = RequestMethod.POST)
+	public @ResponseBody List<Vaga> vagasListaRapida(Long codLoja, Integer limite) {
+		return vagaService.vagasListaRapida(codLoja, limite);
+	}
+	
+	@RequestMapping(value = "/listaRapidaDiferenteLoja", method = RequestMethod.POST)
+	public @ResponseBody List<Vaga> vagasListaRapidaDiferenteLoja(Long codLoja, Integer limite) {
+		return vagaService.vagasListaRapidaDiferenteLoja(codLoja, limite);
+	}
+	
 }

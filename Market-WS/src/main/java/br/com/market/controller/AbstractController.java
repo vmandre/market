@@ -2,8 +2,6 @@ package br.com.market.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,9 +41,5 @@ public abstract class AbstractController <T extends Entity<?>> {
 		MarketErroBean erro = new MarketErroBean(e.getCodigo(), e.getMensagem());
 	    return erro;
 	}
-    
-    public String buildLogMessage(Exception e, HttpServletRequest req) {
-        return "MVC exception: " + e.getLocalizedMessage();
-    }
 
 }

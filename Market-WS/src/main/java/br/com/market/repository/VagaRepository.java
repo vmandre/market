@@ -31,4 +31,25 @@ public class VagaRepository extends EntityRepository<Vaga> {
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Vaga> vagasListaRapidaPorLoja(Long codLoja, Integer limite) {
+		StringBuilder hql = new StringBuilder();
+		hql	.append("from ").append(getEntityName()).append(" ");
+		hql	.append("where cod_loja = :cod");
+		Query query = createQuery(hql);
+		query.setLong("cod", codLoja);
+		query.setMaxResults(limite);
+		return query.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Vaga> vagasListaRapidaDiferenteLoja(Long codLoja, Integer limite) {
+		StringBuilder hql = new StringBuilder();
+		hql	.append("from ").append(getEntityName()).append(" ");
+		hql	.append("where cod_loja <> :cod");
+		Query query = createQuery(hql);
+		query.setLong("cod", codLoja);
+		query.setMaxResults(limite);
+		return query.list();
+	}
 }
