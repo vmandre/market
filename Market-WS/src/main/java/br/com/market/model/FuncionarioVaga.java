@@ -17,6 +17,24 @@ public class FuncionarioVaga extends Identity {
 	
 	private Vaga vaga;
 	private Funcionario funcionario;
+	private Status status;
+	
+	public static enum Status {
+		EM_ANALISE("Em análise"), SELECIONADO("Selecionado"), NAO_SELECIONADO("Não selecionado"), APROVADO("Aprovado"), REPROVADO("Reprovado");
+		private String value;
+		
+		private Status(String value) {
+			this.setValue(value);
+		}
+
+		public String getValue() {
+			return value;
+		}
+
+		public void setValue(String value) {
+			this.value = value;
+		}
+	}
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="cod_vaga", nullable=false)
@@ -30,11 +48,21 @@ public class FuncionarioVaga extends Identity {
 		return funcionario;
 	}
 	
+	@JoinColumn(name="status", nullable=false)
+	public Status getStatus() {
+		return status;
+	}
+	
 	public void setVaga(Vaga vaga) {
 		this.vaga = vaga;
 	}
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 }

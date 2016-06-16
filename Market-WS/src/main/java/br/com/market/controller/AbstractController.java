@@ -24,7 +24,7 @@ public abstract class AbstractController <T extends Entity<?>> {
 	public abstract @ResponseBody T consultar(Long cod);
 	
 	@RequestMapping(value = "/criar", method = RequestMethod.POST)
-	public abstract @ResponseBody T criar(@RequestBody T entity);
+	public abstract @ResponseBody T criar(@RequestBody T entity) throws ModelNaoEncontradoException;
 	
 	@RequestMapping(value="/atualizar",  method = RequestMethod.PUT)
 	@ResponseBody

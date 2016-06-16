@@ -14,7 +14,7 @@ public class NoticiaRepository extends EntityRepository<Noticia> {
 	@SuppressWarnings("unchecked")
 	public List<Noticia> noticiasPorLoja(Long codLoja) {
 		StringBuilder hql = new StringBuilder();
-		hql	.append("select cod, titulo ");
+		hql	.append("select cod, titulo, categoria ");
 		hql	.append("from ").append(getEntityName()).append(" ");
 		hql	.append("where cod_loja = :cod");
 		Query query = createQuery(hql);
@@ -25,7 +25,7 @@ public class NoticiaRepository extends EntityRepository<Noticia> {
 	@SuppressWarnings("unchecked")
 	public List<Noticia> noticiasDiferenteLoja(Long codLoja) {
 		StringBuilder hql = new StringBuilder();
-		hql	.append("select cod, titulo ");
+		hql	.append("select cod, titulo, categoria ");
 		hql	.append("from ").append(getEntityName()).append(" ");
 		hql	.append("where cod_loja <> :cod");
 		Query query = createQuery(hql);
@@ -36,7 +36,7 @@ public class NoticiaRepository extends EntityRepository<Noticia> {
 	@SuppressWarnings("unchecked")
 	public List<Noticia> noticiasListaRapidaPorLoja(Long codLoja, Integer limite) {
 		StringBuilder hql = new StringBuilder();
-		hql	.append("select cod, titulo ");
+		hql	.append("select cod, titulo, categoria ");
 		hql	.append("from ").append(getEntityName()).append(" ");
 		hql	.append("where cod_loja = :cod");
 		Query query = createQuery(hql);
@@ -48,7 +48,7 @@ public class NoticiaRepository extends EntityRepository<Noticia> {
 	@SuppressWarnings("unchecked")
 	public List<Noticia> noticiasListaRapidaDiferenteLoja(Long codLoja, Integer limite) {
 		StringBuilder hql = new StringBuilder();
-		hql	.append("select cod, titulo ");
+		hql	.append("select cod, titulo, categoria ");
 		hql	.append("from ").append(getEntityName()).append(" ");
 		hql	.append("where cod_loja <> :cod");
 		Query query = createQuery(hql);

@@ -25,11 +25,32 @@ public class Noticia extends Identity {
 	private Date dataInicio;
 	private Date dataFim;
 	private Loja loja;
+	private Categoria categoria;
 	
+	public enum Categoria {
+		INFORME_LOCAL("Informativo local"), INFORME_GERAL("Informe geral"), DICA("Dica"), ACAO("Ação"), NOVIDADES("Novidades");
+		
+		private String value;
+		
+		private Categoria(String value) {
+			this.setValue(value);
+		}
+
+		public String getValue() {
+			return value;
+		}
+
+		public void setValue(String value) {
+			this.value = value;
+		}
+	}
+	
+	@Column(name="titulo")
 	public String getTitulo() {
 		return titulo;
 	}
 	
+	@Column(name="texto")
 	public String getTexto() {
 		return texto;
 	}
@@ -52,6 +73,10 @@ public class Noticia extends Identity {
 		return loja;
 	}
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -70,5 +95,9 @@ public class Noticia extends Identity {
 
 	public void setLoja(Loja loja) {
 		this.loja = loja;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 }

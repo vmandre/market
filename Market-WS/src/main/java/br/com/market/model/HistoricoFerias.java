@@ -28,7 +28,7 @@ public class HistoricoFerias extends Identity {
 	private String observacao;
 	
 	public enum Status {
-		AGUARDANDO_APROVACAO ("Aguardando AprovaÃ§Ã£o"),
+		AGUARDANDO_APROVACAO ("Aguardando Aprovação"),
 		APROVADO ("Aprovado"),
 		REPROVADO ("Reprovado"),
 		CANCELADO ("Cancelado");
