@@ -9,6 +9,29 @@ public class Noticia extends AbstractModel {
     private Date dataInicio;
     private Date dataFim;
     private Loja loja;
+    private Categoria categoria;
+
+    public static enum Categoria {
+        INFORME_LOCAL("Informativo local"),
+        INFORME_GERAL("Informe geral"),
+        DICA("Dica"),
+        ACAO("Ação"),
+        NOVIDADES("Novidades");
+
+        private String value;
+
+        private Categoria(String value) {
+            this.setValue(value);
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
 
     public String getTitulo() {
         return titulo;
@@ -49,4 +72,13 @@ public class Noticia extends AbstractModel {
     public void setLoja(Loja loja) {
         this.loja = loja;
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
 }

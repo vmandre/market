@@ -3,6 +3,7 @@ package br.com.market.fragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,7 +85,7 @@ public class NoticiaFragment extends Fragment {
         Log.i(TAG, "METHOD: createNoticia");
         txtNoticiaDetalheTitulo.setText(noticia.getTitulo());
         txtNoticiaDetalheTitulo.setTypeface(null, Typeface.BOLD);
-        txtNoticiaTexto.setText(noticia.getTexto());
+        txtNoticiaTexto.setText(Html.fromHtml(noticia.getTexto()));
     }
 
     @UiThread

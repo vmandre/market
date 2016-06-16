@@ -20,12 +20,10 @@ public class NoticiasAdapter extends BaseAdapter {
 
     private Context context;
     private List<Noticia> noticias;
-    private Boolean exibeLocalizacao;
 
-    public NoticiasAdapter(final Context context, final List<Noticia> noticias, Boolean exibeLocalizacao) {
+    public NoticiasAdapter(final Context context, final List<Noticia> noticias) {
         this.context = context;
         this.noticias = noticias;
-        this.exibeLocalizacao = exibeLocalizacao;
     }
 
     @Override
@@ -60,19 +58,18 @@ public class NoticiasAdapter extends BaseAdapter {
         }
 
         holder.txtNoticiaTitulo.setText(noticia.getTitulo());
-        if (exibeLocalizacao.booleanValue()) {
-            //holder.txtNoticiaLoja.setText(noticia.getLoja().getNome());
-        }
+        holder.txtNoticiaCategoria.setText(Noticia.Categoria.INFORME_GERAL.getValue());
+        //holder.txtNoticiaCategoria.setText(noticia.getCategoria().getValue());
 
         return linha;
     }
 
     class ViewHolder {
         TextView txtNoticiaTitulo;
-        TextView txtNoticiaLoja;
+        TextView txtNoticiaCategoria;
         ViewHolder(View view) {
             this.txtNoticiaTitulo = (TextView) view.findViewById(R.id.txtNoticiaTitulo);
-            this.txtNoticiaLoja = (TextView) view.findViewById(R.id.txtNoticiaLoja);
+            this.txtNoticiaCategoria = (TextView) view.findViewById(R.id.txtNoticiaCategoria);
         }
     }
 }

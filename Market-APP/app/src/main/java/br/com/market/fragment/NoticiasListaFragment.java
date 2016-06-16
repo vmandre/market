@@ -98,6 +98,7 @@ public class NoticiasListaFragment extends Fragment {
                 noticia = new Noticia();
                 noticia.setCod(new Long((Integer) ((ArrayList) resposta[i]).get(0)));
                 noticia.setTitulo((String) ((ArrayList) resposta[i]).get(1));
+                //noticia.setCategoria((Noticia.Categoria) ((ArrayList) resposta[i]).get(2));
 
                 noticias.add(noticia);
             }
@@ -124,6 +125,7 @@ public class NoticiasListaFragment extends Fragment {
                 noticia = new Noticia();
                 noticia.setCod(new Long((Integer) ((ArrayList) resposta[i]).get(0)));
                 noticia.setTitulo((String) ((ArrayList) resposta[i]).get(1));
+                //noticia.setCategoria((Noticia.Categoria) ((ArrayList) resposta[i]).get(2));
 
                 noticias.add(noticia);
             }
@@ -134,16 +136,16 @@ public class NoticiasListaFragment extends Fragment {
 
     @UiThread
     void createListaNoticiasMeuLocal(List<Noticia> noticias) {
-        Log.i(TAG, "METHOD: createNoticia");
+        Log.i(TAG, "METHOD: createListaNoticiasMeuLocal");
         ListView lvNoticias = (ListView) view.findViewById(R.id.lvNoticias);
-        lvNoticias.setAdapter(new NoticiasAdapter(getActivity(), noticias, Boolean.FALSE));
+        lvNoticias.setAdapter(new NoticiasAdapter(getActivity(), noticias));
     }
 
     @UiThread
     void createListaNoticiasDiferenteLocal(List<Noticia> noticias) {
         Log.i(TAG, "METHOD: createListaNoticiasDiferenteLocal");
         ListView lvNoticias = (ListView) view.findViewById(R.id.lvNoticias);
-        lvNoticias.setAdapter(new NoticiasAdapter(getActivity(), noticias, Boolean.TRUE));
+        lvNoticias.setAdapter(new NoticiasAdapter(getActivity(), noticias));
     }
 
     @UiThread

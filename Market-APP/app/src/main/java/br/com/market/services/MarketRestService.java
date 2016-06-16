@@ -41,7 +41,7 @@ public interface MarketRestService {
     @Post("/noticia/listaRapidaPorLoja?codLoja={codLoja}&limite={limite}")
     public Object[] consultaRapidaNoticiasPorLoja(@Path Long codLoja, @Path Integer limite);
 
-    @Post("/noticia/listarRapidaDiferenteLoja?codLoja={codLoja}&limite={limite}")
+    @Post("/noticia/listaRapidaDiferenteLoja?codLoja={codLoja}&limite={limite}")
     public Object[] consultaRapidaNoticiasDiferenteLoja(@Path Long codLoja, @Path Integer limite);
 
     @Post("/noticia/listarDiferenteLoja?codLoja={codLoja}")
