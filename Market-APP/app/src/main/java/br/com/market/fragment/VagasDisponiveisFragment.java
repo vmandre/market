@@ -66,7 +66,7 @@ public class VagasDisponiveisFragment extends Fragment {
 
                ((MainActivity)getActivity()).iniciarFragment(getActivity(), vagasFragmant);
                ((MainActivity)getActivity()).alterarTituloActivity(((MainActivity)getActivity()).
-                       getSupportActionBar(), "Vagas - " + getString(R.string.label_minha_loja));
+                       getSupportActionBar(), getString(R.string.label_vagas_minha_loja));
            }
        });
 
@@ -94,7 +94,7 @@ public class VagasDisponiveisFragment extends Fragment {
 
                ((MainActivity)getActivity()).iniciarFragment(getActivity(), vagasFragmant);
                ((MainActivity)getActivity()).alterarTituloActivity(((MainActivity)getActivity()).
-                       getSupportActionBar(), "Vagas - " + getString(R.string.label_outras_lojas));
+                       getSupportActionBar(), getString(R.string.label_vagas_outras_lojas));
            }
        });
 

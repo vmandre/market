@@ -43,6 +43,11 @@
     <string name="label_requisitos">Requisitos</string>
     <string name="mais"><b>MAIS</b></string>
     <string name="label_minha_loja">Minha Loja</string>
+    <string name="label_vagas_minha_loja">Vagas - Minha Loja</string>
+    <string name="label_noticias_minha_loja">Notícias - Minha Loja</string>
     <string name="label_outras_lojas">Outras Lojas</string>
+    <string name="label_noticias_outras_lojas">Notícias - Outras Lojas</string>
+    <string name="label_vagas_outras_lojas">Vagas - Outras Lojas</string>
 
 </resources>
+

@@ -71,7 +71,7 @@ public class NoticiasFragment extends Fragment {
 
                ((MainActivity)getActivity()).iniciarFragment(getActivity(), noticiasFragmant);
                ((MainActivity)getActivity()).alterarTituloActivity(((MainActivity)getActivity()).
-                       getSupportActionBar(), "Notícias - " + getString(R.string.label_minha_loja));
+                       getSupportActionBar(), getString(R.string.label_noticias_minha_loja));
            }
        });
 
@@ -99,7 +99,7 @@ public class NoticiasFragment extends Fragment {
 
                ((MainActivity)getActivity()).iniciarFragment(getActivity(), noticiasFragmant);
                ((MainActivity)getActivity()).alterarTituloActivity(((MainActivity)getActivity()).
-                       getSupportActionBar(), "Notícias - " + getString(R.string.label_outras_lojas));
+                       getSupportActionBar(), getString(R.string.label_noticias_outras_lojas));
            }
        });
 

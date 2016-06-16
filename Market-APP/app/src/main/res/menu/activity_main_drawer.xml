@@ -24,24 +24,26 @@
     </group>
 
     <group android:id="@+id/menu_group_2"
-        android:checkableBehavior="single">
-        <item android:title="@string/market_area">
-            <menu>
-                <item
-                    android:id="@+id/nav_lista_vagas"
-                    android:icon="@drawable/ic_menu_vaga"
-                    android:title="@string/vagas_disponiveis" />
+        android:checkableBehavior="single"
+        android:menuCategory="secondary">
+        <!--<item android:title="@string/market_area">-->
+        <!--<menu>-->
+        <item
+            android:id="@+id/nav_lista_vagas"
+            android:icon="@drawable/ic_menu_vaga"
+            android:title="@string/vagas_disponiveis" />
 
-                <item
-                    android:id="@+id/nav_lista_noticias"
-                    android:icon="@drawable/ic_menu_noticias"
-                    android:title="@string/noticias" />
-            </menu>
-        </item>
+        <item
+            android:id="@+id/nav_lista_noticias"
+            android:icon="@drawable/ic_menu_noticias"
+            android:title="@string/noticias" />
+        <!--</menu>-->
+        <!--</item>-->
     </group>
 
     <group android:id="@+id/menu_group_3"
-        android:checkableBehavior="single">
+        android:checkableBehavior="single"
+        android:menuCategory="secondary">
         <item
             android:id="@+id/nav_configuracao"
             android:icon="@drawable/ic_menu_manage"

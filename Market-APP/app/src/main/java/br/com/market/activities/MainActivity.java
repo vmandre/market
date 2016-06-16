@@ -112,11 +112,27 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i(TAG, "METHOD: onOptionsItemSelected");
         int id = item.getItemId();
+        String titulo = null;
+
+        if (item.getTitle() != null) {
+            titulo = item.getTitle().toString();
+        }
 
         if (id == R.id.action_settings) {
             Intent it = new Intent(MainActivity.this, LoginActivity_.class);
             startActivity(it);
-        } else {
+        } else if (getString(R.string.noticias).equals(titulo) ||
+                getString(R.string.label_noticias_outras_lojas).equals(titulo) ||
+                getString(R.string.label_noticias_minha_loja).equals(titulo)) {
+            iniciarFragment(this, new NoticiasFragment_());
+            alterarTituloActivity(getSupportActionBar(), getString(R.string.noticias));
+
+            Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(myChildToolbar);
+            createActionBar();
+        } else if (getString(R.string.vagas_disponiveis).equals(titulo) ||
+        getString(R.string.label_vagas_outras_lojas).equals(titulo) ||
+                getString(R.string.label_vagas_minha_loja).equals(titulo)) {
             iniciarFragment(this, new VagasDisponiveisFragment_());
             alterarTituloActivity(getSupportActionBar(), getString(R.string.vagas_disponiveis));
 
@@ -174,17 +190,6 @@ public class MainActivity extends AppCompatActivity
         t.commit();
     }
 
-//    public void iniciarFragmentComVoltar(final FragmentActivity activity, final Fragment fragment) {
-//        FragmentTransaction t =  activity.getSupportFragmentManager().beginTransaction();
-//        t.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-//
-//        if (t.isAddToBackStackAllowed()) {
-//            Log.i(TAG, "%%%%%%%%%%%% PODE VOLTAR %%%%%%%%%%%%%%%%%%%");
-//        }
-//        t.replace(R.id.fragment_principal, fragment);
-//        t.commit();
-//    }
-
     public void alterarTituloActivity(ActionBar bar, String titulo) {
         bar.setDisplayHomeAsUpEnabled(false); //Set true para alterar o icone do hamburguer pela flecha
         alterarTituloBarraActivity(bar, titulo);
@@ -197,8 +202,6 @@ public class MainActivity extends AppCompatActivity
         bar.setDisplayHomeAsUpEnabled(true);
         //bar.setDisplayShowHomeEnabled(true);
         alterarTituloBarraActivity(bar, titulo);
-
-
     }
 
     private void alterarTituloBarraActivity(ActionBar bar, String titulo) {

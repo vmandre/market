@@ -17,7 +17,7 @@
             android:textColor="@color/preto"
             android:gravity="center_vertical"
             android:layout_alignParentRight="true"
-            android:textSize="15dp"
+            android:textSize="17dp"
             android:layout_marginLeft="20dp"/>
 
         <TextView
