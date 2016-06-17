@@ -2,17 +2,13 @@ package br.com.market.listeners;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
-
-import br.com.market.R;
 
 public class DataPickerListener extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 

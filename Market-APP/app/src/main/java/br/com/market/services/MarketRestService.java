@@ -9,6 +9,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import java.util.List;
 
 import br.com.market.models.AplicacaoVaga;
+import br.com.market.models.Ferias;
 import br.com.market.models.Funcionario;
 import br.com.market.models.Noticia;
 import br.com.market.models.Vaga;
@@ -53,5 +54,8 @@ public interface MarketRestService {
 
     @Post("/funcionarioVaga/criar")
     public AplicacaoVaga aplicarVaga(@Body AplicacaoVaga aplicacaoVaga);
+
+    @Post("/ferias/criar")
+    public Ferias solicitarFerias(@Body Ferias ferias);
 
 }

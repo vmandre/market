@@ -8,23 +8,18 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 import br.com.market.R;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
-import br.com.market.services.MarketRestService;
 import br.com.market.models.Funcionario;
+import br.com.market.services.MarketRestService;
 
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity {

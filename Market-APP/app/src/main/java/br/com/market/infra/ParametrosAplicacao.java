@@ -3,8 +3,6 @@ package br.com.market.infra;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import br.com.market.R;
-
 public class ParametrosAplicacao {
 
     private static final String PREFERENCES_NAME = "br.com.market.PREFERENCE_FILE_KEY";

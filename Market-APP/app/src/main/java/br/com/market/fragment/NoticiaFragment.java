@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +17,7 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 
-import java.util.List;
-
 import br.com.market.R;
-import br.com.market.adapter.NoticiasAdapter;
 import br.com.market.models.Noticia;
 import br.com.market.services.MarketRestService;
 

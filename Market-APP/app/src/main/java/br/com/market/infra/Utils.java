@@ -1,17 +1,22 @@
 package br.com.market.infra;
 
-import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpClientErrorException;
+
 import java.io.IOException;
 
 import br.com.market.models.AbstractModel;
+import br.com.market.models.ErroMarket;
 
 public class Utils {
+
+    public static String DATA_FORMATO = "dd/MM/yyyy";
 
     /**
      * Metodo resposável por verificar se o device possui conexão com a internet.
@@ -48,6 +53,26 @@ public class Utils {
         }
 
         return model;
+    }
+
+    public static String validaErroServicoHttpClient(HttpClientErrorException e, String mensagemPadrao) {
+        if (HttpStatus.BAD_REQUEST.equals(e.getStatusCode())) {
+            ErroMarket erroMarket = null;
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonString = e.getResponseBodyAsString();
+            try {
+                erroMarket = mapper.readValue(jsonString, ErroMarket.class);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+                return mensagemPadrao;
+            }
+
+            if (erroMarket != null) {
+                return erroMarket.getMensagem();
+            }
+        }
+
+        return mensagemPadrao;
     }
 
 }

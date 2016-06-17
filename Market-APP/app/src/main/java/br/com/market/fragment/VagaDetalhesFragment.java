@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,17 +17,13 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
-import org.json.JSONStringer;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import br.com.market.R;
-import br.com.market.activities.MainActivity;
-import br.com.market.adapter.VagasAdapter;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
 import br.com.market.models.AplicacaoVaga;
@@ -78,7 +71,7 @@ public class VagaDetalhesFragment extends Fragment {
 
    private void initScreen(final View view) {
        Log.i(TAG, "METHOD: initScreen");
-       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+       SimpleDateFormat sdf = new SimpleDateFormat(Utils.DATA_FORMATO);
 
        txtVagaCargo.setText(vaga.getCargo().getDescricao());
        txtVagaLoja.setText(vaga.getLoja().getNome());
@@ -95,7 +88,7 @@ public class VagaDetalhesFragment extends Fragment {
                aplicacaoVaga.setVaga(vaga);
                aplicacaoVaga.setFuncionario(funcionarioLogado);
 
-               consultarListaVagasLoja(aplicacaoVaga);
+               aplicarVagaSelecionada(aplicacaoVaga);
            }
        });
     }
@@ -128,30 +121,14 @@ public class VagaDetalhesFragment extends Fragment {
     }
 
     @Background
-    public void consultarListaVagasLoja(AplicacaoVaga aplicacaoVaga) {
+    public void aplicarVagaSelecionada(AplicacaoVaga aplicacaoVaga) {
         AplicacaoVaga resposta = null;
 
         try {
             resposta = marketService.aplicarVaga(aplicacaoVaga);
         }catch (HttpClientErrorException e) {
-            if (HttpStatus.BAD_REQUEST.equals(e.getStatusCode())) {
-                ErroMarket erroMarket = null;
-                ObjectMapper mapper = new ObjectMapper();
-                String jsonString = e.getResponseBodyAsString();
-                try {
-                    erroMarket = mapper.readValue(jsonString, ErroMarket.class);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                    erroServico("Erro na aplicação da vaga, favor tentar mais tarde.");
-                }
-
-                if (erroMarket != null) {
-                    erroServico(erroMarket.getMensagem());
-                }
-            } else {
-                erroServico("Erro na aplicação da vaga, favor tentar mais tarde.");
-            }
-
+            erroServico(Utils.validaErroServicoHttpClient(e,
+                    "Erro na aplicação da vaga, favor tentar mais tarde."));
             return;
         } catch (Exception e) {
             erroServico("Erro na aplicação da vaga, favor tentar mais tarde.");

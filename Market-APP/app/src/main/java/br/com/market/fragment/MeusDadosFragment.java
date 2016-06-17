@@ -17,7 +17,6 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import java.text.SimpleDateFormat;
 
 import br.com.market.R;
-import br.com.market.activities.MainActivity;
 import br.com.market.infra.ParametrosAplicacao;
 import br.com.market.infra.Utils;
 import br.com.market.models.Funcionario;
@@ -71,7 +70,7 @@ public class MeusDadosFragment extends Fragment {
 
         Funcionario funcionarioLogado = (Funcionario) Utils.jsonToObject(
                 ParametrosAplicacao.getParametro(getActivity().getApplicationContext(), ParametrosAplicacao.CHAVE_FUNCIONARIO_LOGADO), Funcionario.class);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat(Utils.DATA_FORMATO);
         int posicao = funcionarioLogado.getNome().indexOf(" ");
 
         if (posicao > 0) {

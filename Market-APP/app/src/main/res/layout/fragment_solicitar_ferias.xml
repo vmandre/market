@@ -19,102 +19,116 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="5dp"
             android:shape="oval"
-            app:cardBackgroundColor="@color/branco"
-            android:padding="5dp">
+            app:cardBackgroundColor="@color/branco">
 
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@color/branco"
-                android:columnCount="2"
-                android:padding="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <GridLayout
+                    android:id="@+id/glFormularioFerias"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:padding="15dp"
-                    android:text="@string/label_inicio"
-                    android:textColor="@color/preto"
-                    android:textSize="15sp" />
+                    android:layout_margin="5dp"
+                    android:background="@color/branco"
+                    android:columnCount="2"
+                    android:padding="5dp">
 
-                <Button
-                    android:id="@+id/btnInicio"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="15dp"
-                    android:background="@drawable/button_border"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:padding="15dp"
+                        android:text="@string/label_inicio"
+                        android:textColor="@color/preto"
+                        android:textSize="15sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:layout_columnSpan="2"
-                    android:paddingTop="30dp"
-                    android:background="@color/cinza_claro" />
+                    <Button
+                        android:id="@+id/btnInicio"
+                        android:layout_width="180dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/button_border"
+                        android:gravity="bottom|center_horizontal"
+                        android:padding="10dp"
+                        android:textAlignment="gravity"
+                        android:textSize="18dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:padding="15dp"
-                    android:text="@string/label_fim"
-                    android:textColor="@color/preto"
-                    android:textSize="15sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_columnSpan="2"
+                        android:background="@color/cinza_claro"
+                        android:paddingTop="30dp" />
 
-                <Button
-                    android:id="@+id/btnFim"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="15dp"
-                    android:background="@drawable/button_border"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:padding="15dp"
+                        android:text="@string/label_fim"
+                        android:textColor="@color/preto"
+                        android:textSize="15sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:layout_columnSpan="2"
-                    android:paddingTop="30dp"
-                    android:background="@color/cinza_claro" />
+                    <Button
+                        android:id="@+id/btnFim"
+                        android:layout_width="180dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/button_border"
+                        android:gravity="bottom|center_horizontal"
+                        android:padding="10dp"
+                        android:textAlignment="gravity"
+                        android:textSize="18dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:padding="15dp"
-                    android:text="@string/label_observacao"
-                    android:textColor="@color/preto"
-                    android:textSize="15sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_columnSpan="2"
+                        android:background="@color/cinza_claro"
+                        android:paddingTop="30dp" />
 
-                <EditText
-                    android:id="@+id/edtObs"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:padding="15dp"
+                        android:text="@string/label_observacao"
+                        android:textColor="@color/preto"
+                        android:textSize="15sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:layout_columnSpan="2"
-                    android:paddingTop="30dp"
-                    android:background="@color/cinza_claro" />
+                    <EditText
+                        android:id="@+id/edtObs"
+                        android:layout_width="wrap_content"
+                        android:maxWidth="240dp"
+                        android:layout_height="match_parent"
+                        android:lines="2"
+                        android:maxLength="1024"
+                        android:minWidth="180dp"
+                        android:padding="10dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_columnSpan="2"
+                        android:background="@color/cinza_claro"
+                        android:paddingTop="30dp" />
+                </GridLayout>
 
                 <Button
                     android:id="@+id/btnSolicitar"
                     android:layout_width="@dimen/nav_header_height"
                     android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/colorPrimary"
-                    android:textColor="@color/branco"
-                    android:text="@string/btn_solicitar" />
-            </GridLayout>
+                    android:text="@string/btn_solicitar"
+                    android:textColor="@color/branco" />
+            </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
