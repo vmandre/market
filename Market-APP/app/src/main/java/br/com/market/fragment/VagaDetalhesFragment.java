@@ -8,17 +8,34 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
+import org.json.JSONStringer;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpClientErrorException;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import br.com.market.R;
+import br.com.market.activities.MainActivity;
+import br.com.market.adapter.VagasAdapter;
+import br.com.market.infra.ParametrosAplicacao;
+import br.com.market.infra.Utils;
+import br.com.market.models.AplicacaoVaga;
+import br.com.market.models.ErroMarket;
+import br.com.market.models.Funcionario;
 import br.com.market.models.Vaga;
 import br.com.market.services.MarketRestService;
 
@@ -41,6 +58,8 @@ public class VagaDetalhesFragment extends Fragment {
     TextView txtVagaRemuneracao;
     @ViewById(R.id.txtVagaRequisito)
     TextView txtVagaRequisito;
+    @ViewById(R.id.btnAplicar)
+    Button btnAplicar;
 
     private View view;
     private Vaga vaga;
@@ -65,6 +84,20 @@ public class VagaDetalhesFragment extends Fragment {
        txtVagaLoja.setText(vaga.getLoja().getNome());
        txtVagaDataInclusao.setText(sdf.format(vaga.getDataAbertura()));
        txtVagaRequisito.setText(vaga.getDescricao());
+
+       btnAplicar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Funcionario funcionarioLogado = (Funcionario) Utils.jsonToObject(
+                       ParametrosAplicacao.getParametro(getActivity().getApplicationContext(), ParametrosAplicacao.CHAVE_FUNCIONARIO_LOGADO), Funcionario.class);
+
+               AplicacaoVaga aplicacaoVaga = new AplicacaoVaga();
+               aplicacaoVaga.setVaga(vaga);
+               aplicacaoVaga.setFuncionario(funcionarioLogado);
+
+               consultarListaVagasLoja(aplicacaoVaga);
+           }
+       });
     }
 
     private void initFields() {
@@ -89,6 +122,49 @@ public class VagaDetalhesFragment extends Fragment {
         if (txtVagaRequisito == null) {
             txtVagaRequisito = (TextView) view.findViewById(R.id.txtVagaRequisito);
         }
+        if (btnAplicar == null) {
+            btnAplicar = (Button) view.findViewById(R.id.btnAplicar);
+        }
+    }
+
+    @Background
+    public void consultarListaVagasLoja(AplicacaoVaga aplicacaoVaga) {
+        AplicacaoVaga resposta = null;
+
+        try {
+            resposta = marketService.aplicarVaga(aplicacaoVaga);
+        }catch (HttpClientErrorException e) {
+            if (HttpStatus.BAD_REQUEST.equals(e.getStatusCode())) {
+                ErroMarket erroMarket = null;
+                ObjectMapper mapper = new ObjectMapper();
+                String jsonString = e.getResponseBodyAsString();
+                try {
+                    erroMarket = mapper.readValue(jsonString, ErroMarket.class);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                    erroServico("Erro na aplicação da vaga, favor tentar mais tarde.");
+                }
+
+                if (erroMarket != null) {
+                    erroServico(erroMarket.getMensagem());
+                }
+            } else {
+                erroServico("Erro na aplicação da vaga, favor tentar mais tarde.");
+            }
+
+            return;
+        } catch (Exception e) {
+            erroServico("Erro na aplicação da vaga, favor tentar mais tarde.");
+            return;
+        }
+
+        verificarResposta(resposta);
+    }
+
+    @UiThread
+    void verificarResposta(AplicacaoVaga aplicacaoVaga) {
+        Log.i(TAG, "METHOD: verificarResposta");
+        exibirToast("Aplicação com sucesso", Toast.LENGTH_LONG);
     }
 
     @UiThread

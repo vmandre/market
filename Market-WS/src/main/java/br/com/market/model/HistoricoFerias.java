@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -69,7 +71,9 @@ public class HistoricoFerias extends Identity {
 	public Date getDataFim() {
 		return dataFim;
 	}
-
+	
+	@Column(name="status", nullable=false)
+	@Enumerated(EnumType.STRING)
 	public Status getStatus() {
 		return status;
 	}

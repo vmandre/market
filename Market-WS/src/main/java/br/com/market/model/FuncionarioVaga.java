@@ -1,6 +1,9 @@
 package br.com.market.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -48,7 +51,8 @@ public class FuncionarioVaga extends Identity {
 		return funcionario;
 	}
 	
-	@JoinColumn(name="status", nullable=false)
+	@Column(name="status", nullable=false)
+	@Enumerated(EnumType.STRING)
 	public Status getStatus() {
 		return status;
 	}

@@ -58,8 +58,8 @@ public class NoticiasAdapter extends BaseAdapter {
         }
 
         holder.txtNoticiaTitulo.setText(noticia.getTitulo());
-        holder.txtNoticiaCategoria.setText(Noticia.Categoria.INFORME_GERAL.getValue());
-        //holder.txtNoticiaCategoria.setText(noticia.getCategoria().getValue());
+        //holder.txtNoticiaCategoria.setText(Noticia.Categoria.INFORME_GERAL.getValue());
+        holder.txtNoticiaCategoria.setText(noticia.getCategoria().getValue());
 
         return linha;
     }

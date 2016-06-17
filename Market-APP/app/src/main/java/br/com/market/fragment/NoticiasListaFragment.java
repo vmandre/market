@@ -91,18 +91,7 @@ public class NoticiasListaFragment extends Fragment {
             return;
         }
 
-        List<Noticia> noticias = new ArrayList<Noticia>();
-        Noticia noticia = null;
-        if (resposta != null) {
-            for (int i = 0; i < resposta.length; i++) {
-                noticia = new Noticia();
-                noticia.setCod(new Long((Integer) ((ArrayList) resposta[i]).get(0)));
-                noticia.setTitulo((String) ((ArrayList) resposta[i]).get(1));
-                //noticia.setCategoria((Noticia.Categoria) ((ArrayList) resposta[i]).get(2));
-
-                noticias.add(noticia);
-            }
-        }
+        List<Noticia> noticias = respostaParaNoticias(resposta);
 
         createListaNoticiasMeuLocal(noticias);
     }
@@ -118,6 +107,12 @@ public class NoticiasListaFragment extends Fragment {
             return;
         }
 
+        List<Noticia> noticias = respostaParaNoticias(resposta);
+
+        createListaNoticiasDiferenteLocal(noticias);
+    }
+
+    private List<Noticia> respostaParaNoticias(Object[] resposta) {
         List<Noticia> noticias = new ArrayList<Noticia>();
         Noticia noticia = null;
         if (resposta != null) {
@@ -125,13 +120,13 @@ public class NoticiasListaFragment extends Fragment {
                 noticia = new Noticia();
                 noticia.setCod(new Long((Integer) ((ArrayList) resposta[i]).get(0)));
                 noticia.setTitulo((String) ((ArrayList) resposta[i]).get(1));
-                //noticia.setCategoria((Noticia.Categoria) ((ArrayList) resposta[i]).get(2));
+                noticia.setCategoria(Noticia.Categoria.valueOf((String) ((ArrayList) resposta[i]).get(2)));
 
                 noticias.add(noticia);
             }
         }
 
-        createListaNoticiasDiferenteLocal(noticias);
+        return noticias;
     }
 
     @UiThread
