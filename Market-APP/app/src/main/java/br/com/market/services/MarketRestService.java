@@ -11,11 +11,12 @@ import java.util.List;
 import br.com.market.models.AplicacaoVaga;
 import br.com.market.models.Ferias;
 import br.com.market.models.Funcionario;
+import br.com.market.models.Holerite;
 import br.com.market.models.Noticia;
 import br.com.market.models.Vaga;
 
 
-//@Rest(rootUrl = "http://192.168.0.7:8080/market", converters = { MappingJackson2HttpMessageConverter.class })
+//@Rest(rootUrl = "http://192.168.0.8:8080/market", converters = { MappingJackson2HttpMessageConverter.class })
 @Rest(rootUrl = "http://market-env.sa-east-1.elasticbeanstalk.com", converters = { MappingJackson2HttpMessageConverter.class })
 public interface MarketRestService {
 
@@ -57,5 +58,8 @@ public interface MarketRestService {
 
     @Post("/ferias/criar")
     public Ferias solicitarFerias(@Body Ferias ferias);
+
+    @Post("/holerite/consultarPorFuncionarioEDataEmissao?codFuncionario={codFuncionario}&dataEmissao={dataEmissao}")
+    public Holerite consultarHolerite(@Path Long codFuncionario, @Path String dataEmissao);
 
 }
