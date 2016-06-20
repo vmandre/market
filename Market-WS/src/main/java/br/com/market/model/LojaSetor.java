@@ -17,13 +17,13 @@ public class LojaSetor extends Identity {
 	private Loja loja;
 	private Setor setor;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_loja", nullable=false)
 	public Loja getLoja() {
 		return loja;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_setor", nullable=false)
 	public Setor getSetor() {
 		return setor;

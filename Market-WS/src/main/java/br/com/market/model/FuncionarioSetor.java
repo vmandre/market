@@ -25,13 +25,13 @@ public class FuncionarioSetor extends Identity {
 	private Date dataInicio;
 	private Date dataFim;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_funcionario", nullable=false)
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_setor", nullable=false)
 	public Setor getSetor() {
 		return setor;

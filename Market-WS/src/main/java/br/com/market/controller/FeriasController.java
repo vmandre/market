@@ -1,5 +1,6 @@
 package br.com.market.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import br.com.market.infra.exception.ModelNaoEncontradoException;
 import br.com.market.infra.service.EntityService;
 import br.com.market.model.HistoricoFerias;
+import br.com.market.model.HistoricoFerias.Status;
 
 @Controller
 @RequestMapping("ferias")
@@ -32,6 +34,13 @@ public class FeriasController extends AbstractController<HistoricoFerias> {
 	
 	@Override
 	public @ResponseBody HistoricoFerias criar(@RequestBody HistoricoFerias ferias) {
+		if (ferias.getDataSolicitacao() == null) {
+			ferias.setDataSolicitacao(new Date());
+		}
+		
+		if(ferias.getStatus() == null) {
+			ferias.setStatus(Status.AGUARDANDO_APROVACAO);
+		}
 		feriasService.save(ferias);
 		return ferias;
 	}

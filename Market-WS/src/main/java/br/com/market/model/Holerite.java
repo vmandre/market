@@ -24,7 +24,7 @@ public class Holerite extends Identity {
 	private Date dataEmissao;
 	private String path;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_funcionario", nullable=false)
 	public Funcionario getFuncionario() {
 		return funcionario;
@@ -36,6 +36,7 @@ public class Holerite extends Identity {
 		return dataEmissao;
 	}
 	
+	@Column(name="path_arquivo")
 	public String getPath() {
 		return path;
 	}

@@ -39,13 +39,13 @@ public class FuncionarioVaga extends Identity {
 		}
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_vaga", nullable=false)
 	public Vaga getVaga() {
 		return vaga;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cod_funcionario", nullable=false)
 	public Funcionario getFuncionario() {
 		return funcionario;
